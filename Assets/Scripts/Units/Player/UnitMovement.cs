@@ -20,4 +20,24 @@ public class UnitMovement : IMovable
         transform.position += position * Time.deltaTime * speed;
     }
 
+    public void MoveToDirection()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            Move(new Vector3(0, 1, 0));
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            Move(new Vector3(0, -1, 0));
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            Move(new Vector3(1, 0, 0));
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            Move(new Vector3(-1, 0, 0));
+        }
+    }
+
 }

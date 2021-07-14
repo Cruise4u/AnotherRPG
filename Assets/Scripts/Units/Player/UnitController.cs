@@ -6,7 +6,6 @@ public class UnitController : MonoBehaviour
 {
     public Rigidbody2D rb;
 
-
     public SpriteRenderer weaponSprite;
     public Camera playerCamera;
     public BaseStatsData baseStatsData;
@@ -15,75 +14,55 @@ public class UnitController : MonoBehaviour
 
     public bool isAttacking;
     public UnitCombat unitCombat;
-    public float arcAngle;
     public float range;
 
     public float aimAngle;
 
     private BaseStats baseStats;
     private UnitMovement unitMovement;
-    private UnitAim unitAim;
+    private AbilityAim unitAim;
 
-    public void MoveToDirection(UnitCombat unitCombat)
-    {
-        if (unitCombat.isHit != true)
-        {
-            if (Input.GetKey(KeyCode.W))
-            {
-                unitMovement.Move(new Vector3(0, 1, 0));
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                unitMovement.Move(new Vector3(0, -1, 0));
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                unitMovement.Move(new Vector3(1, 0, 0));
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                unitMovement.Move(new Vector3(-1, 0, 0));
-            }
-        }
-    }
-
-    public void ReadKeyboardInput()
+    public void KeyboardInputCallback()
     {
         if (Input.anyKey)
         {
-            MoveToDirection(unitCombat);
+            unitMovement.MoveToDirection();
         }
     }
 
-    public void ReadMouseInput()
+    public void MouseInputCallback()
     {
         unitCombat.ReduceCooldown(0.85f);
         if (Input.GetMouseButtonDown(0))
         {
             if(unitCombat.attackCooldown < 0.1f)
             {
-                //unitCombat.MeleeSwingTweening(arcAngle,playerWeaponGO,unitAim,this);
-                //unitCombat.StabAnimation(transform,playerWeapon, range);
-                StartCoroutine(unitCombat.SwingTweenAnimationCoroutine(transform, playerWeapon,unitAim.GetAngleFromRotation()));
-                //StartCoroutine(unitCombat.StabTweenAnimationCoroutine(transform, playerWeapon, range));
+
             }
         }
+    }
+
+    public void AimInputCallback()
+    {
+        unitAim.SetWeaponAimAtMouse(playerCamera, weaponSprite);
     }
 
     public void Start()
     {
         baseStats = new BaseStats(baseStatsData);
         unitMovement = new UnitMovement(transform,rb,baseStats.speed);
-        unitAim = new UnitAim(transform, playerAimGO,playerWeapon);
+        unitAim = new AbilityAim(transform, playerAimGO,playerWeapon);
         unitCombat = new UnitCombat();
     }
 
     // Update is called once per frame
+
     public void Update()
     {
-        ReadKeyboardInput();
-        ReadMouseInput();
-        unitAim.AimWeaponAtMouseIndicator(playerCamera, weaponSprite);
+        KeyboardInputCallback();
+        MouseInputCallback();
+        AimInputCallback();
+
     }
 
 }

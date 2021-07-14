@@ -152,7 +152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1826071011730595403}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &157788600
 BoxCollider2D:
@@ -190,7 +190,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.03858894, y: -0.165382}
@@ -2413,7 +2413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913465330}
-  m_LocalRotation: {x: -0, y: -0, z: -0.00000020861623, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.00000025021697, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2462,7 +2462,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 443fe7076a7ace145bfdc95cee6b533a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b5d13fd830ef3e45abab197445a2381, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7332,9 +7332,9 @@ GameObject:
   - component: {fileID: 1826071011730595403}
   - component: {fileID: 1826071011730595402}
   - component: {fileID: 1826071011730595400}
-  - component: {fileID: 1826071011730595406}
-  - component: {fileID: 165104843}
   - component: {fileID: 165104845}
+  - component: {fileID: 165104843}
+  - component: {fileID: 1826071011730595406}
   m_Layer: 0
   m_Name: PlayerHero
   m_TagString: Untagged
@@ -7423,9 +7423,9 @@ Transform:
   m_LocalPosition: {x: -3.55, y: -2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 157788599}
-  - {fileID: 1826071013266959237}
   - {fileID: 1826071013651327050}
+  - {fileID: 1826071013266959237}
+  - {fileID: 157788599}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7441,14 +7441,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7330350daa1f54186e3ede465d9488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 165104845}
   weaponSprite: {fileID: 913465332}
   playerCamera: {fileID: 1826071011984272125}
   baseStatsData: {fileID: 11400000, guid: afcb0825d2f2a724ca0b692580368ed5, type: 2}
   playerAimGO: {fileID: 1826071013266959239}
   playerWeapon: {fileID: 1826071013651327045}
   isAttacking: 0
-  arcAngle: -60
   range: 1
   aimAngle: 0
 --- !u!4 &1826071011984271874
@@ -7615,7 +7614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1826071013651327045
 GameObject:
   m_ObjectHideFlags: 0
@@ -7625,10 +7624,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1826071013651327050}
-  - component: {fileID: 1826071013651327048}
-  - component: {fileID: 1826071013651327051}
-  - component: {fileID: 5380778355623924743}
   - component: {fileID: 3130906297056060934}
+  - component: {fileID: 1826071013651327048}
+  - component: {fileID: 5380778355623924743}
+  - component: {fileID: 1826071013651327051}
   m_Layer: 0
   m_Name: WeaponSlot
   m_TagString: Untagged
@@ -7662,11 +7661,11 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0}
-      - {x: 0.123370506, y: 0.5564888}
-      - {x: 0.062054038, y: 0.5666122}
-      - {x: -0.00000008778436, y: 0.57000005}
-      - {x: -0.06205421, y: 0.5666122}
-      - {x: -0.123370685, y: 0.5564888}
+      - {x: 0.13052624, y: 0.9914449}
+      - {x: 0.065403186, y: 0.99785894}
+      - {x: 0.00000005909472, y: 1}
+      - {x: -0.06540307, y: 0.997859}
+      - {x: -0.13052614, y: 0.99144495}
 --- !u!4 &1826071013651327050
 Transform:
   m_ObjectHideFlags: 0
@@ -7675,12 +7674,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826071013651327045}
   m_LocalRotation: {x: -0, y: -0, z: -0.70287865, w: 0.7113098}
-  m_LocalPosition: {x: 0.1, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 913465331}
   m_Father: {fileID: 1826071011730595403}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.317}
 --- !u!114 &1826071013651327051
 MonoBehaviour:
@@ -7694,8 +7693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5b844a330b8804bbc135928ac02c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_radius: 0.57
-  m_fanAngle: 25
+  m_radius: 1
+  m_fanAngle: 15
   m_numVertices: 5
 --- !u!50 &3130906297056060934
 Rigidbody2D:
@@ -7790,6 +7789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351475a0c2f0cdc429d2d5a0ebc0f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityCustomCollider: {fileID: 1826071013651327051}
 --- !u!1001 &7489074400040991857
 PrefabInstance:
   m_ObjectHideFlags: 0

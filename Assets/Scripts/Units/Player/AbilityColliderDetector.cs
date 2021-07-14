@@ -1,8 +1,10 @@
-﻿using System;
+﻿using CustomPrimitiveColliders;
+using System;
 using UnityEngine;
 
-public class UnitWeaponCollider : MonoBehaviour
+public class AbilityColliderDetector : MonoBehaviour
 {
+    public BaseCustomCollider abilityCustomCollider;
     public UnitCombat unitCombat;
 
     public void Start()
@@ -10,7 +12,10 @@ public class UnitWeaponCollider : MonoBehaviour
         unitCombat = new UnitCombat();
     }
 
-
+    public void SetCollider(Ability ability)
+    {
+        
+    }
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
@@ -22,7 +27,16 @@ public class UnitWeaponCollider : MonoBehaviour
             unitCombat.PushEnemyOnHit(enemy.transform, direction,0.1f);
         }
     }
+}
 
+public class AbilityColliderData
+{
+    private int radius;
+    private int angle;
 
-
+    public AbilityColliderData(int radius,int angle)
+    {
+        this.radius = radius;
+        this.angle = angle;
+    }
 }
