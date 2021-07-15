@@ -5,6 +5,8 @@ using UnityEngine;
 
 public static class AbilityTweenAnimator
 {
+
+
     public static IEnumerator CoroutineSwingTweenAnimation(Transform transform, GameObject weapon, float angle, float range)
     {
         var weaponBasePosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
@@ -37,8 +39,25 @@ public static class AbilityTweenAnimator
         weapon.transform.GetChild(0).transform.localPosition = new Vector3(0.1f, 0.5f, 0);
     }
 
-    public static IEnumerator CoroutineFullCircleTweenAnimation(Transform trasnform,GameObject weapon)
+    public static IEnumerator CoroutineFullCircleTweenAnimation(Transform transform, GameObject weapon,bool condition,float angle, float range)
     {
-
+        var weaponBasePosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
+        var weaponTipPosition = weapon.transform.GetChild(0).GetChild(1).transform.position;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * range;
+        var adjustedWeaponPosition = new Vector3(weapon.transform.position.x, weapon.transform.position.y + 0.5f, 0.0f);
+        Tween forwardLungeTween = transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.15f).SetEase(Ease.Linear);
+        Vector3 fullRotation;
+        if(condition == true)
+        {
+            fullRotation = new Vector3(0, 0, -angle);
+            weapon.transform.DORotate(fullRotation, 1.0f, RotateMode.FastBeyond360).SetEase(Ease.Linear);
+        }
+        else
+        {
+            fullRotation = new Vector3(0, 180, -angle);
+            weapon.transform.DORotate(fullRotation, 1.0f, RotateMode.FastBeyond360).SetEase(Ease.Linear);
+        }
+        yield return forwardLungeTween.WaitForCompletion();
+        weapon.transform.GetChild(0).transform.localPosition = new Vector3(0.1f, 0.5f, 0);
     }
 }

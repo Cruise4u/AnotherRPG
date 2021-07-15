@@ -58,6 +58,6 @@ public class HolyStrike : Ability
 
     public override void ProcessAbility()
     {
-        throw new NotImplementedException();
+        Debug.Log("Do Holy Strike Cool Stuff!!");
     }
 }

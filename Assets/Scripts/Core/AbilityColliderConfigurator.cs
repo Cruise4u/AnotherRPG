@@ -15,6 +15,7 @@ public static class AbilityColliderConfigurator
                     weapon.AddComponent<FanCollider2D>();
                     var fan = weapon.GetComponent<FanCollider2D>();
                     ConfigureCustomCollider(fan, ability.colliderData);
+                    DisableCollider(weapon);
                     break;
             }
         }

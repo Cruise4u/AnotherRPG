@@ -6,7 +6,6 @@ public class AbilityAim
     private Camera camera;
     private Transform transform;
     private GameObject weapon;
-
     public AbilityAim(Camera camera,Transform transform, GameObject weapon)
     {
         this.camera = camera;
@@ -14,8 +13,9 @@ public class AbilityAim
         this.weapon = weapon;
     }
 
-    public float GetAimAngle(Vector3 mousePosition)
+    public float GetAimAngle()
     {
+        Vector3 mousePosition = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, camera.nearClipPlane));
         Vector2 adjustedOrigin = new Vector2(transform.position.x, transform.position.y - 0.7f);
         Vector2 aimPoint = new Vector3(mousePosition.x, mousePosition.y,0.0f);
         Vector2 aimDirection = (aimPoint - adjustedOrigin).normalized;
@@ -25,8 +25,7 @@ public class AbilityAim
 
     public void SetWeaponAimAtMouse()
     {
-        Vector3 mousePosition = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, camera.nearClipPlane));
-        var angle = GetAimAngle(mousePosition);
+        var angle = GetAimAngle();
         if(angle >= 20.0f && angle <= 160.0f)
         {
             weapon.transform.position = new Vector3(transform.position.x + 0.15f, transform.position.y - 0.5f, 0.0f);
@@ -37,6 +36,19 @@ public class AbilityAim
             weapon.transform.position = new Vector3(transform.position.x - 0.15f, transform.position.y - 0.5f, 0.0f);
             weapon.transform.rotation = Quaternion.Euler(0, -180, angle);
         }
+    }
 
+    public bool IsAnglePositive()
+    {
+        bool condition = false;
+        if(GetAimAngle() > 0.0f && GetAimAngle() < 180.0f)
+        {
+            condition = true;
+        }
+        else if (GetAimAngle() > 180.0f && GetAimAngle() < 360.0f)
+        {
+            condition = false;
+        }
+        return condition;
     }
 }

@@ -5,27 +5,49 @@ using UnityEngine;
 public class UnitController : MonoBehaviour
 {
     private Rigidbody2D rb;
-
     private UnitMovement unitMovement;
     public AbilityController abilityController;
     public UnitCombat unitCombat;
 
-    public void KeyboardInputCallback()
+    public void NumericKeyboardInputCallBack()
     {
-        if (Input.anyKey)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            unitMovement.MoveToDirection();
+            abilityController.SetCurrentAbility(AbilityName.HolyStrike);
         }
     }
 
-    public void MouseInputCallback()
+    public void WASDInputCallBack()
+    {
+        if (Input.anyKey)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                unitMovement.Move(new Vector3(0, 1, 0));
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                unitMovement.Move(new Vector3(0, -1, 0));
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                unitMovement.Move(new Vector3(1, 0, 0));
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                unitMovement.Move(new Vector3(-1, 0, 0));
+            }
+        }
+    }
+
+    public void AbilityInputCallback()
     {
         unitCombat.ReduceCooldown(0.85f);
         if (Input.GetMouseButtonDown(0))
         {
             if(unitCombat.attackCooldown < 0.1f)
             {
-
+                abilityController.CastAbility(abilityController.currentAbility.abilityName);
             }
         }
     }
@@ -35,6 +57,7 @@ public class UnitController : MonoBehaviour
         abilityController.abilityAim.SetWeaponAimAtMouse();
     }
 
+
     public void Start()
     {
         unitMovement = new UnitMovement(transform,rb,3);
@@ -43,8 +66,9 @@ public class UnitController : MonoBehaviour
 
     public void Update()
     {
-        KeyboardInputCallback();
-        MouseInputCallback();
+        WASDInputCallBack();
+        NumericKeyboardInputCallBack();
+        AbilityInputCallback();
         AimInputCallback();
     }
 
