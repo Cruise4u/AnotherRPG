@@ -12,27 +12,27 @@ namespace CustomPrimitiveColliders
     public class FanCollider2D : BaseCustomCollider
     {
         [SerializeField]
-        private float m_radius = 1f;
+        public float radius = 1f;
         [SerializeField, Range(1, 360)]
-        private int m_fanAngle = 135;
+        public int angle = 135;
         [SerializeField]
-        private int m_numVertices = 32;
+        public int vertices = 32;
 
         private void Awake()
         {
-            ReCreate(m_radius, m_fanAngle, m_numVertices);
+            ReCreate(radius, angle, vertices);
         }
 
 #if UNITY_EDITOR
 
         private void Reset()
         {
-            ReCreate(m_radius, m_fanAngle, m_numVertices);
+            ReCreate(radius, angle, vertices);
         }
 
         private void OnValidate()
         {
-            ReCreate(m_radius, m_fanAngle, m_numVertices);
+            ReCreate(radius, angle, vertices);
         }
 
 #endif
@@ -59,13 +59,13 @@ namespace CustomPrimitiveColliders
                 numVertices = 4;
             }
 
-            m_radius = radius;
-            m_fanAngle = fanAngle;
-            m_numVertices = numVertices;
+            this.radius = radius;
+            this.angle = fanAngle;
+            vertices = numVertices;
 
             Vector2[] points = new Vector2[numVertices + (fanAngle == 360 ? 2 : 1)];
 
-            Quaternion quatStep = Quaternion.Euler(0f, 0f, fanAngle / (float)(fanAngle == 360 ? m_numVertices : (numVertices - 1)));
+            Quaternion quatStep = Quaternion.Euler(0f, 0f, fanAngle / (float)(fanAngle == 360 ? vertices : (numVertices - 1)));
 
             points[0] = Vector2.zero;
 

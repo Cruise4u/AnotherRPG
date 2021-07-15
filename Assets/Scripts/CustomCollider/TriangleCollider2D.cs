@@ -12,29 +12,29 @@ namespace CustomPrimitiveColliders
     public class TriangleCollider2D : BaseCustomCollider
     {
         [SerializeField]
-        private float m_radius = 0.5f;
+        public float radius = 0.5f;
         [SerializeField]
-        private float m_length = 1f;
+        public float length = 1f;
         [SerializeField]
-        private bool m_useOpenAngle = false;
+        public bool IsOpenAngleUsed = false;
         [SerializeField, Range(1, 179)]
-        private int m_openAngle = 45;
+        public int openAngle = 45;
 
         private void Awake()
         {
-            ReCreate(m_radius, m_length, m_useOpenAngle, m_openAngle);
+            ReCreate(radius, length, IsOpenAngleUsed, openAngle);
         }
 
 #if UNITY_EDITOR
 
         private void Reset()
         {
-            ReCreate(m_radius, m_length, m_useOpenAngle, m_openAngle);
+            ReCreate(radius, length, IsOpenAngleUsed, openAngle);
         }
 
         private void OnValidate()
         {
-            ReCreate(m_radius, m_length, m_useOpenAngle, m_openAngle);
+            ReCreate(radius, length, IsOpenAngleUsed, openAngle);
         }
 
 #endif
@@ -66,10 +66,10 @@ namespace CustomPrimitiveColliders
                 radius = length * Mathf.Tan(openAngle * Mathf.Deg2Rad / 2f);
             }
 
-            m_radius = radius;
-            m_length = length;
-            m_useOpenAngle = useOpenAngle;
-            m_openAngle = openAngle;
+            this.radius = radius;
+            this.length = length;
+            IsOpenAngleUsed = useOpenAngle;
+            this.openAngle = openAngle;
             int numVertices = 4;
 
             Vector2[] points = new Vector2[numVertices];

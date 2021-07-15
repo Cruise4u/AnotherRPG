@@ -4,23 +4,11 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    public SpriteRenderer weaponSprite;
-    public Camera playerCamera;
-    public BaseStatsData baseStatsData;
-    public GameObject playerAimGO;
-    public GameObject playerWeapon;
-
-    public bool isAttacking;
-    public UnitCombat unitCombat;
-    public float range;
-
-    public float aimAngle;
-
-    private BaseStats baseStats;
     private UnitMovement unitMovement;
-    private AbilityAim unitAim;
+    public AbilityController abilityController;
+    public UnitCombat unitCombat;
 
     public void KeyboardInputCallback()
     {
@@ -44,25 +32,20 @@ public class UnitController : MonoBehaviour
 
     public void AimInputCallback()
     {
-        unitAim.SetWeaponAimAtMouse(playerCamera, weaponSprite);
+        abilityController.abilityAim.SetWeaponAimAtMouse();
     }
 
     public void Start()
     {
-        baseStats = new BaseStats(baseStatsData);
-        unitMovement = new UnitMovement(transform,rb,baseStats.speed);
-        unitAim = new AbilityAim(transform, playerAimGO,playerWeapon);
+        unitMovement = new UnitMovement(transform,rb,3);
         unitCombat = new UnitCombat();
     }
-
-    // Update is called once per frame
 
     public void Update()
     {
         KeyboardInputCallback();
         MouseInputCallback();
         AimInputCallback();
-
     }
 
 }
