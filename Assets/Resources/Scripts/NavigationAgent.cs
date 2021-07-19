@@ -6,51 +6,34 @@ public class NavigationAgent : MonoBehaviour
     public float mass;
     public float maxSpeed;
 
-    public Vector3 velocity;
+    [NonSerialized]
     public Vector3 acceleration;
-    public Vector3 desiredVelocity;
+    [NonSerialized]
     public Vector3 steeringForce;
+    [NonSerialized]
     public Vector3 position;
+    [NonSerialized]
+    public Vector3 previousPosition;
 
-    public void Steer()
+    public Vector3 velocity;
+
+    public Vector3 CalculateVelocity()
     {
-        velocity += acceleration * Time.deltaTime;
-        if(velocity.magnitude > maxSpeed)
+        Vector3 currentVelocity = (transform.position - previousPosition) / Time.deltaTime;
+        previousPosition = transform.position;
+        return currentVelocity;
+    }
+
+    public void Steer(Vector3 newPosition)
+    {
+        steeringForce = newPosition;
+        acceleration = steeringForce / mass;
+        velocity = acceleration * Time.deltaTime;
+        if (velocity.magnitude > maxSpeed)
         {
             velocity = velocity.normalized * maxSpeed;
         }
+        transform.position += velocity;
     }
-
-
-    //public void MoveTowardsDirection()
-    //{
-    //    position += position * maxSpeed;
-    //    velocity = position;
-    //}
-
-
-
-
-    //public void Move(Vector3 position)
-    //{
-    //    position += position * maxSpeed;
-    //}
-
-
-
-    //public void CalculateSteer(NavigationAgent targetAgent)
-    //{
-    //    desiredVelocity = (targetAgent.position - position).normalized * maxSpeed;
-    //    steeringForce = desiredVelocity - targetAgent.velocity;
-    //}
-
-
-
-    //public void BaseValueStep()
-    //{
-    //    acceleration = (steeringForce / mass);
-    //    velocity = Vector3.zero;
-
-    //}
 
 }

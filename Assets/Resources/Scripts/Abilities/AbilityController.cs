@@ -10,7 +10,6 @@ public class AbilityController : MonoBehaviour
     public Ability currentAbility;
     public Action<bool> BlockInputDelegate;
 
-
     public void Start()
     {
         abilityAim = new AbilityAim(transform, weapon);

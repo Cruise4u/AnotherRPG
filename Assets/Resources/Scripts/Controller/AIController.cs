@@ -5,6 +5,12 @@ public class AIController : UnitController
 {
     private GameObject target;
 
+    public override void Start()
+    {
+        base.Start();
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
+
     public override void AimInput()
     {
         abilityController.abilityAim.aimDirection = target.transform.position-transform.position;
@@ -13,7 +19,6 @@ public class AIController : UnitController
 
     public override void MoveInput()
     {
-        var direction = (target.transform.position - transform.position).normalized;
-        unitMovement.Move(direction);
+        throw new NotImplementedException();
     }
 }

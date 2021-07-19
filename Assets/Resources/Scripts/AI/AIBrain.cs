@@ -11,6 +11,13 @@ public class AIBrain : MonoBehaviour
         this.target = target;
     }
 
+
+
+
+
+
+
+
     //public void Seek()
     //{
     //    Vector3 targetDirection = (target.transform.position - transform.position);

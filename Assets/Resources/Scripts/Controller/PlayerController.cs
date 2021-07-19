@@ -4,6 +4,7 @@ using QuestTales.Core.Abilities;
 
 public class PlayerController : UnitController
 {
+    public float inputForce;
     private CameraManager cameraManager;
 
     public override void Start()
@@ -24,19 +25,19 @@ public class PlayerController : UnitController
         {
             if (Input.GetKey(KeyCode.W))
             {
-                unitMovement.Move(new Vector3(0, 1, 0));
+                navAgent.Steer(new Vector3(0,1,0) * inputForce);
             }
             if (Input.GetKey(KeyCode.S))
             {
-                unitMovement.Move(new Vector3(0, -1, 0));
+                navAgent.Steer(new Vector3(0, -1, 0) * inputForce);
             }
             if (Input.GetKey(KeyCode.D))
             {
-                unitMovement.Move(new Vector3(1, 0, 0));
+                navAgent.Steer(new Vector3(1, 0, 0) * inputForce);
             }
             if (Input.GetKey(KeyCode.A))
             {
-                unitMovement.Move(new Vector3(-1, 0, 0));
+                navAgent.Steer(new Vector3(-1, 0, 0) * inputForce);
             }
         }
     }
@@ -51,16 +52,18 @@ public class PlayerController : UnitController
 
     public void AbilityInputCallback()
     {
-        unitCombat.ReduceCooldown(0.85f);
-        if (Input.GetMouseButtonDown(0))
+        if (abilityController.currentAbility != null)
         {
-            if (unitCombat.attackCooldown < 0.1f)
+            unitCombat.ReduceCooldown(0.85f);
+            if (Input.GetMouseButtonDown(0))
             {
-                abilityController.CastAbility(abilityController.currentAbility.abilityName);
+                if (unitCombat.attackCooldown < 0.1f)
+                {
+                    abilityController.CastAbility(abilityController.currentAbility.abilityName);
+                }
             }
         }
     }
-
 
     public void Update()
     {
