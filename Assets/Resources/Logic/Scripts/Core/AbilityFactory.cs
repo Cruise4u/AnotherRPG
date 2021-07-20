@@ -11,6 +11,8 @@ public static class AbilityFactory
     public static bool isInitialized => abilityDictionary != null;
     public static void InitAbilityFactory()
     {
+        if (!isInitialized)
+            return;
         var abilityTypes = Assembly.GetAssembly(typeof(Ability)).GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(Ability)) && type.IsClass);
 
         abilityDictionary = new Dictionary<IdType, Type>();
@@ -36,36 +38,3 @@ public static class AbilityFactory
     }
 
 }
-
-//public abstract class ConcreteClassAbilityFactory
-//{
-//    public AbilityNameDataReference abilityNameReference;
-
-//    public abstract Dictionary<AbilityName, Ability> ClassDictionary { get; }
-
-//    public abstract AbilityName[] AbilityNameArray { get;}
-
-//    public abstract void InitClassAbilityFactory(AbilityName[] abilitieNameKeys);
-
-//    public abstract
-//}
-
-////public class PaladinAbilityFactory : ConcreteClassAbilityFactory
-////{
-////    public override AbilityName[] AbilityNameArray { get => abilityNameReference.abilityNameList.ToArray(); }
-
-////    public override Dictionary<AbilityName, Ability> ClassDictionary => new Dictionary<AbilityName, Ability>();
-
-////    public override void InitClassAbilityFactory(AbilityName[] abilitieNameKeys)
-////    {
-////        foreach(AbilityName name in abilitieNameKeys)
-////        {
-////            if(AbilityFactory.abilityDictionary.ContainsKey(name))
-////            {
-////                ClassDictionary.Add(name, AbilityFactory.abilityDictionary[name]);
-////            }
-////        }
-////    }
-
-
-////}

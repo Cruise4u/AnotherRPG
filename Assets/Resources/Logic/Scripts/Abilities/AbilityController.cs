@@ -2,36 +2,41 @@
 using System.Collections;
 using UnityEngine;
 using QuestTales.Core.Abilities;
+using System.Collections.Generic;
 
 public class AbilityController : MonoBehaviour
 {
-    public GameObject weapon;
-    public AbilityAim abilityAim;
-    public Ability currentAbility;
-    public WeaponAnimation weaponAnimation;
-    public Action<bool> BlockInputDelegate;
-    public Vector2 offset;
+    public AbilityBook abilityBook;
+    public WeaponAnimator weaponAnimator;
+    public WeaponAnimationData weaponAnimationData;
 
-    public void Start()
+    public AbilityAim abilityAim;
+    public Vector2 offset;
+    public Action<bool> BlockInputDelegate;
+
+    public void Init()
     {
-        weaponAnimation = new WeaponAnimation();
-        abilityAim = new AbilityAim(transform, offset,weapon);
         AbilityFactory.InitAbilityFactory();
+        abilityBook = new AbilityBook();
+        //abilityBook.Init();
+        weaponAnimator = new WeaponAnimator(transform.GetChild(0).gameObject);
+        abilityAim = new AbilityAim(transform, offset, weaponAnimator.weapon);
+        weaponAnimator.weaponAnimation.SetAnimationSettings(weaponAnimationData);
     }
 
     public void SetCurrentAbility(IdType id)
     {
-        currentAbility = AbilityFactory.GetAbilityByName(id);
-        AbilityColliderConfigurator.SetCollider(weapon, currentAbility);
+        abilityBook.currentAbility = AbilityFactory.GetAbilityByName(id);
+        AbilityColliderConfigurator.SetCollider(weaponAnimator.weapon, abilityBook.currentAbility);
     }
 
     public void CastAbility()
     {
-        AbilityColliderConfigurator.EnableCollider(weapon);
-        AnimateAbility(currentAbility);
+        AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
+        AnimateAbility(abilityBook.currentAbility);
         StartCoroutine(CoroutineInputBlockage(0.5f));
-        StartCoroutine(AbilityColliderConfigurator.WaitForSecondsToDisableCollider(weapon, 0.5f));
-        currentAbility.ProcessAbility();
+        StartCoroutine(AbilityColliderConfigurator.WaitForSecondsToDisableCollider(weaponAnimator.weapon, 0.5f));
+        abilityBook.currentAbility.ProcessAbility();
     }
 
     public void AnimateAbility(Ability ability)
@@ -40,10 +45,10 @@ public class AbilityController : MonoBehaviour
         switch (ability.animationType)
         {
             case AnimationType.Swing:
-                StartCoroutine(AbilityTweenAnimator.CoroutineSwingTweenAnimation(this));
+                StartCoroutine(weaponAnimator.weaponAnimation.CoroutineSwingTweenAnimation(this));
                 break;
             case AnimationType.Circular:
-                StartCoroutine(AbilityTweenAnimator.CoroutineFullCircleTweenAnimation(this));
+                StartCoroutine(weaponAnimator.weaponAnimation.CoroutineFullCircleTweenAnimation(this));
                 break;
         }
     }
@@ -57,3 +62,28 @@ public class AbilityController : MonoBehaviour
 
 }
 
+public class AbilityBook
+{
+    public Dictionary<IdType, Ability> abilityDictionary;
+    public Ability currentAbility;
+    public CooldownController cooldownController;
+
+    //public void Init()
+    //{
+    //    abilityDictionary = new Dictionary<IdType, Ability>();
+    //    cooldownController = new CooldownController();
+    //}
+}
+
+public class WeaponAnimator
+{
+    public GameObject weapon;
+    public WeaponAnimation weaponAnimation;
+
+    public WeaponAnimator(GameObject weapon)
+    {
+        this.weapon = weapon;
+        weaponAnimation = new WeaponAnimation();
+    }
+
+}

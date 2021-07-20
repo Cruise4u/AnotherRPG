@@ -4,6 +4,9 @@ using Random = UnityEngine.Random;
 
 public static class Mathematics
 {
+    public static RaycastHit2D rayCastHit;
+
+
     public static float GetAngleIn360(Vector2 point)
     {
         float angle = (Mathf.Atan2(point.x, point.y) / Mathf.PI) * 180f;
@@ -30,9 +33,6 @@ public static class Mathematics
         point.z = 0;
         return point;
     }
-
-
-
 
 
 }

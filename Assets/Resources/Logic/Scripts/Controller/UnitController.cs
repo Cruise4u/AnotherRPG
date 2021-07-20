@@ -21,10 +21,11 @@ public abstract class UnitController : MonoBehaviour
         abilityController = GetComponent<AbilityController>();
     }
 
-    public virtual void Start()
+    public virtual void Init()
     {
         unitCombat = new UnitCombat();
         abilityController = GetComponent<AbilityController>();
+        abilityController.Init();
         abilityController.BlockInputDelegate += ToggleInputBlockage;
     }
 

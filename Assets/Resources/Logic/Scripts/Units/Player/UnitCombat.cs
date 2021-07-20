@@ -5,7 +5,6 @@ using System.Collections;
 
 public class UnitCombat : IDamagable
 {
-    //TweenCallback ArcMeleeAnimationDelegate;
     public bool isHit;
     public bool isInCombat;
     public float attackCooldown;

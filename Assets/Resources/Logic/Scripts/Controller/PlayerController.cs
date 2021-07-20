@@ -8,10 +8,9 @@ public class PlayerController : UnitController
     private CameraManager cameraManager;
     private NavigationAgent myAgent;
 
-
-    public override void Start()
+    public override void Init()
     {
-        base.Start();
+        base.Init();
         cameraManager = FindObjectOfType<CameraManager>();
         myAgent = GetComponent<NavigationAgent>();
     }
@@ -55,9 +54,9 @@ public class PlayerController : UnitController
         }
     }
 
-    public void AbilityInputCallback()
+    public void AbilityInput()
     {
-        if (abilityController.currentAbility != null)
+        if (abilityController.abilityBook.currentAbility != null)
         {
             unitCombat.ReduceCooldown(0.85f);
             if (Input.GetMouseButtonDown(0))
@@ -70,14 +69,14 @@ public class PlayerController : UnitController
         }
     }
 
-    public void Update()
+    public void UpdatePlayerController()
     {
         if (isInputBlocked != true)
         {
             MoveInput();
             NumericKeyboardInputCallBack();
-            AbilityInputCallback();
             AimInput();
+            AbilityInput();
         }
     }
 }
