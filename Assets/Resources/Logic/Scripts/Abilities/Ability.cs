@@ -32,9 +32,17 @@ namespace QuestTales.Core.Abilities
         Ranged,
     }
 
+    public enum ControllerType
+    {
+        Player,
+        AI,
+    }
+
     public abstract class Ability
     {
         public AbilityColliderDetector abilityColliderDetector;
+
+        public abstract ControllerType controllerType { get; }
 
         public abstract IdType abilityName { get; }
 
@@ -47,6 +55,8 @@ namespace QuestTales.Core.Abilities
         public abstract void ProcessAbility();
 
         public abstract ColliderData colliderData { get; }
+
+        public abstract AbilityStatsData abilityData { get; }
     }
 }
 

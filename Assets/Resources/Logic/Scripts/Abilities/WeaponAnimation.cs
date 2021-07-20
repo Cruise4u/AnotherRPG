@@ -5,77 +5,76 @@ using UnityEngine;
 
 public class WeaponAnimation
 {
-    Tuple<Vector2> offsetTuple;
-    Tuple<float, float> animationTuple;
+    Vector2 weaponOffset;
     Vector2 weaponLocalPosition;
 
-    public WeaponAnimation(Tuple<Vector2> offsetTuple, Tuple<float, float> animationTuple)
+    public void SetAnimationSettings(WeaponAnimationData abilityAnimationData)
     {
-        this.offsetTuple = offsetTuple;
-        this.animationTuple = animationTuple;
+        weaponOffset = abilityAnimationData.weaponOffset;
+        weaponLocalPosition = abilityAnimationData.weaponLocalPosition;
     }
 
-    public void SetWeaponDirection(AbilityController abilityController)
+    public IEnumerator CoroutineSwingTweenAnimation(AbilityController abilityController)
     {
-        var weaponBasePosition = abilityController.weapon.transform.GetChild(0).GetChild(0).transform.position;
-        var weaponTipPosition = abilityController.weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.currentAbility.colliderData.radius;
-        var adjustedWeaponPosition = new Vector3(abilityController.weapon.transform.position.x + offsetTuple.Item1.x, abilityController.weapon.transform.position.y + offsetTuple.Item1.y, 0.0f);
-    }
-
-    public IEnumerator CoroutineSwingTweenAnimation(AbilityController abilityController,float diferentialAngle)
-    {
-        abilityController.BlockInputDelegate.Invoke(true);
-        var weaponBasePosition = abilityController.weapon.transform.GetChild(0).GetChild(0).transform.position;
-        var weaponTipPosition = abilityController.weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.currentAbility.colliderData.radius;
-        var adjustedWeaponPosition = new Vector3(abilityController.weapon.transform.position.x, abilityController.weapon.transform.position.y + 0.5f, 0.0f);
-        var initialAngle = abilityController.currentAbility.colliderData.angle - diferentialAngle;
-        var finalAngle = abilityController.currentAbility.colliderData.angle + (diferentialAngle * 2.0f);
         Sequence sequence = DOTween.Sequence();
+        abilityController.BlockInputDelegate.Invoke(true);
+        var weaponBasePosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(0).transform.position;
+        var weaponTipPosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(1).transform.position;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.abilityBook.currentAbility.colliderData.radius;
+        var adjustedWeaponPosition = new Vector3(abilityController.weaponAnimator.weapon.transform.position.x + weaponOffset.x, abilityController.weaponAnimator.weapon.transform.position.y + weaponOffset.y, 0.0f);
+        var initialAngle = abilityController.abilityBook.currentAbility.colliderData.angle - 10.0f;
+        var finalAngle = abilityController.abilityBook.currentAbility.colliderData.angle + (10.0f * 2.0f);
         Quaternion initialRotation = Quaternion.Euler(0, 0, -initialAngle);
         Quaternion finalRotation = Quaternion.Euler(0, 0, -finalAngle);
         Tween forwardLungeTween = abilityController.transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.15f).SetEase(Ease.Linear);
-        sequence.Append(abilityController.weapon.transform.DOLocalRotate(initialRotation.eulerAngles, 0.1f));
-        sequence.Append(abilityController.weapon.transform.DOLocalRotate(finalRotation.eulerAngles, 0.2f));
+        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(initialRotation.eulerAngles, 0.1f));
+        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(finalRotation.eulerAngles, 0.2f));
         sequence.Play();
         yield return forwardLungeTween.WaitForCompletion();
         abilityController.BlockInputDelegate.Invoke(false);
     }
 
-    public static IEnumerator CoroutineStabTweenAnimation(Transform transform, GameObject weapon, float range)
+    public IEnumerator CoroutineStabTweenAnimation(AbilityController abilityController,float range)
     {
-        var weaponBasePosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
-        var weaponTipPosition = weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * range;
+        abilityController.BlockInputDelegate.Invoke(true);
+        var weaponBasePosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(0).transform.position;
+        var weaponTipPosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(1).transform.position;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.abilityBook.currentAbility.colliderData.radius;
+        var adjustedWeaponPosition = new Vector3(abilityController.weaponAnimator.weapon.transform.position.x + weaponOffset.x, abilityController.weaponAnimator.weapon.transform.position.y + weaponOffset.y, 0.0f);
         var angle = Mathf.Atan2(weaponDirection.y, weaponDirection.x);
-        var adjustedWeaponPosition = new Vector3(weapon.transform.position.x, weapon.transform.position.y + 0.5f, 0.0f);
-        Tween forwardLungeTween = transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.17f).SetEase(Ease.Linear);
-        weapon.transform.GetChild(0).transform.DOLocalMoveY(Mathf.Sin(angle), 0.17f).SetEase(Ease.OutCirc);
-        weapon.transform.GetChild(0).transform.DOLocalMoveY(0.1f, 0.17f).SetEase(Ease.OutCirc);
+        Tween forwardLungeTween = abilityController.weaponAnimator.weapon.transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.17f).SetEase(Ease.Linear);
+        abilityController.weaponAnimator.weapon.transform.GetChild(0).transform.DOLocalMoveY(Mathf.Sin(angle), 0.17f).SetEase(Ease.OutCirc);
+        abilityController.weaponAnimator.weapon.transform.GetChild(0).transform.DOLocalMoveY(0.1f, 0.17f).SetEase(Ease.OutCirc);
         yield return forwardLungeTween.WaitForCompletion();
-        weapon.transform.GetChild(0).transform.localPosition = new Vector3(0.1f, 0.5f, 0);
+        abilityController.weaponAnimator.weapon.transform.GetChild(0).transform.localPosition = weaponLocalPosition;
+        abilityController.BlockInputDelegate.Invoke(false);
     }
 
-    public static IEnumerator CoroutineFullCircleTweenAnimation(AbilityController abilityController)
+    public IEnumerator CoroutineFullCircleTweenAnimation(AbilityController abilityController)
     {
-        var weaponBasePosition = abilityController.weapon.transform.GetChild(0).GetChild(0).transform.position;
-        var weaponTipPosition = abilityController.weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.currentAbility.colliderData.radius;
-        var adjustedWeaponPosition = new Vector3(abilityController.weapon.transform.position.x, abilityController.weapon.transform.position.y + 0.5f, 0.0f);
+        abilityController.BlockInputDelegate.Invoke(true);
+        var weaponBasePosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(0).transform.position;
+        var weaponTipPosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(1).transform.position;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.abilityBook.currentAbility.colliderData.radius;
+        var adjustedWeaponPosition = new Vector3(abilityController.weaponAnimator.weapon.transform.position.x + weaponOffset.x, abilityController.weaponAnimator.weapon.transform.position.y + weaponOffset.y, 0.0f);
         Tween forwardLungeTween = abilityController.transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.15f).SetEase(Ease.Linear);
         Vector3 fullRotation;
         if (abilityController.abilityAim.IsAnglePositive(abilityController.abilityAim.GetUnitCircleAimAngle()) != false)
         {
             fullRotation = new Vector3(0, 0, -180);
-            abilityController.weapon.transform.DORotate(fullRotation, 0.5f, RotateMode.FastBeyond360).SetEase(Ease.Linear);
+            abilityController.weaponAnimator.weapon.transform.DORotate(fullRotation, 0.5f, RotateMode.FastBeyond360).SetEase(Ease.Linear);
         }
         else
         {
             fullRotation = new Vector3(0, 180, -180);
-            abilityController.weapon.transform.DORotate(fullRotation, 0.5f, RotateMode.FastBeyond360).SetEase(Ease.Linear);
+            abilityController.weaponAnimator.weapon.transform.DORotate(fullRotation, 0.5f, RotateMode.FastBeyond360).SetEase(Ease.Linear);
         }
         yield return forwardLungeTween.WaitForCompletion();
-        abilityController.weapon.transform.GetChild(0).transform.localPosition = new Vector3(0.1f, 0.5f, 0);
+        abilityController.weaponAnimator.weapon.transform.GetChild(0).transform.localPosition = weaponLocalPosition;
+        abilityController.BlockInputDelegate.Invoke(false);
     }
+    
+
+
 }
+
