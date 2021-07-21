@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class AbilityController : MonoBehaviour
 {
     public AbilityBook abilityBook;
+    public AbilityBookData abilityBookData;
     public WeaponAnimator weaponAnimator;
     public WeaponAnimationData weaponAnimationData;
 
@@ -18,7 +19,7 @@ public class AbilityController : MonoBehaviour
     {
         AbilityFactory.InitAbilityFactory();
         abilityBook = new AbilityBook();
-        //abilityBook.Init();
+        abilityBook.Init(abilityBookData.abilityIdList);
         weaponAnimator = new WeaponAnimator(transform.GetChild(0).gameObject);
         abilityAim = new AbilityAim(transform, offset, weaponAnimator.weapon);
         weaponAnimator.weaponAnimation.SetAnimationSettings(weaponAnimationData);
@@ -64,15 +65,16 @@ public class AbilityController : MonoBehaviour
 
 public class AbilityBook
 {
-    public Dictionary<IdType, Ability> abilityDictionary;
     public Ability currentAbility;
     public CooldownController cooldownController;
 
-    //public void Init()
-    //{
-    //    abilityDictionary = new Dictionary<IdType, Ability>();
-    //    cooldownController = new CooldownController();
-    //}
+    public void Init(List<IdType> abilityIdList)
+    {
+        cooldownController = new CooldownController();
+        cooldownController.Init();
+        cooldownController.AddEntriesToCooldownDictionary(abilityIdList);
+    }
+
 }
 
 public class WeaponAnimator

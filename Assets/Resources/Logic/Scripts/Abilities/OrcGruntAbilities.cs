@@ -18,7 +18,7 @@ namespace QuestTales.Core.Abilities.OrcGrunt
 
         public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Orc/BashCollider");
 
-        public override AbilityStatsData abilityData => throw new NotImplementedException();
+        public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Orc/BashStatsData");
 
         public override void ProcessAbility()
         {

@@ -6,20 +6,26 @@ public class CooldownController
 {
     public Dictionary<Ability, float> cooldownDictionary;
 
-    public void Init(int numberOfAbilities)
+    public void Init()
     {
         cooldownDictionary = new Dictionary<Ability, float>();
     }
 
-    public void AddEntriesToCooldownDictionary(Ability ability)
+    public void AddEntriesToCooldownDictionary(List<IdType> abilityIdList)
     {
-        cooldownDictionary.Add(ability, ability.abilityData.cooldown);
+        foreach(IdType abilityId in abilityIdList)
+        {
+            var ability = AbilityFactory.GetAbilityByName(abilityId);
+            cooldownDictionary.Add(ability, ability.abilityData.cooldown);
+        }
     }
 
-    public void IterateThroughAbilitiesCooldown(Ability[] abilityArray, float amount)
+    public void IterateThroughAbilitiesOnCooldown(List<IdType> abilityIdList, float amount)
     {
-        foreach (Ability ability in abilityArray)
+        foreach (IdType abilityId in abilityIdList)
         {
+            var ability = AbilityFactory.GetAbilityByName(abilityId);
+            cooldownDictionary.Add(ability, ability.abilityData.cooldown);
             if (cooldownDictionary[ability] > 0.05f)
             {
                 //Reduce Cooldown every (Time.deltaTime)

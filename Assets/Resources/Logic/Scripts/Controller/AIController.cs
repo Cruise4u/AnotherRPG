@@ -10,7 +10,6 @@ public class AIController : UnitController
     public AIDetection detection;
     public bool isChasingPlayer;
 
-
     public override void Init()
     {
         base.Init();
