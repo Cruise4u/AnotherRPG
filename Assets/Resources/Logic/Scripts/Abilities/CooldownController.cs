@@ -1,48 +1,56 @@
 ﻿using QuestTales.Core.Abilities;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class CooldownController
+public class CooldownController : MonoBehaviour
 {
-    public Dictionary<Ability, float> cooldownDictionary;
+    public List<float> cooldownList;
+    public List<bool> abilityReadyList;
+    public int lastSelectedId;
 
     public void Init()
     {
-        cooldownDictionary = new Dictionary<Ability, float>();
+        cooldownList = new List<float>();
+        abilityReadyList = new List<bool>();
     }
 
-    public void AddEntriesToCooldownDictionary(List<IdType> abilityIdList)
+    public void AddCooldownToList(List<IdType> abilityIdList)
     {
-        foreach(IdType abilityId in abilityIdList)
+        for(int i = 0; i < abilityIdList.ToArray().Length; i++)
         {
-            var ability = AbilityFactory.GetAbilityByName(abilityId);
-            cooldownDictionary.Add(ability, ability.abilityData.cooldown);
+            var ability = AbilityFactory.GetAbilityByName(abilityIdList.ToArray()[i]);
+            cooldownList.Add(0);
+            abilityReadyList.Add(true);
         }
     }
 
-    public void IterateThroughAbilitiesOnCooldown(List<IdType> abilityIdList, float amount)
+    public void SetCooldownToMaximum(List<IdType> abilityIdList)
     {
-        foreach (IdType abilityId in abilityIdList)
+        var idType = AbilityFactory.GetAbilityByName(abilityIdList[lastSelectedId]).abilityIdType;
+        cooldownList[lastSelectedId] = AbilityFactory.GetAbilityByName(idType).abilityData.cooldown;
+        abilityReadyList[lastSelectedId] = false;
+    }
+
+    public void IterateThroughAbilitiesOnCooldown(List<IdType> abilityIdList)
+    {
+        for(int i = 0; i< cooldownList.ToArray().Length; i++)
         {
-            var ability = AbilityFactory.GetAbilityByName(abilityId);
-            cooldownDictionary.Add(ability, ability.abilityData.cooldown);
-            if (cooldownDictionary[ability] > 0.05f)
+            if (IsAbilityOnCooldown())
             {
-                //Reduce Cooldown every (Time.deltaTime)
-                cooldownDictionary[ability] = -amount;
-            }
-            else
-            {
-                //Or if it reaches near 0, sets it to max, so it can be used again!
-                cooldownDictionary[ability] = ability.abilityData.cooldown;
+                cooldownList[i] -= Time.deltaTime;
+                if (cooldownList[i] < 0.05f)
+                {
+                    abilityReadyList[i] = true;
+                }
             }
         }
     }
 
-    public bool IsAbilityOnCooldown(Ability ability)
+    public bool IsAbilityOnCooldown()
     {
         bool condition;
-        if(cooldownDictionary[ability] > 0.05f)
+        if(cooldownList[lastSelectedId] > 0.05f && abilityReadyList[lastSelectedId] == false)
         {
             condition = true;
         }
@@ -53,4 +61,3 @@ public class CooldownController
         return condition;
     }
 }
-

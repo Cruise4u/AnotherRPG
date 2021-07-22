@@ -6,38 +6,41 @@ using System.Collections.Generic;
 
 public class AbilityController : MonoBehaviour
 {
-    public AbilityBook abilityBook;
+    public Ability currentAbility;
+    public AbilityAim abilityAim;
     public AbilityBookData abilityBookData;
+    public CooldownController cooldownController;
     public WeaponAnimator weaponAnimator;
     public WeaponAnimationData weaponAnimationData;
 
-    public AbilityAim abilityAim;
     public Vector2 offset;
     public Action<bool> BlockInputDelegate;
 
     public void Init()
     {
         AbilityFactory.InitAbilityFactory();
-        abilityBook = new AbilityBook();
-        abilityBook.Init(abilityBookData.abilityIdList);
         weaponAnimator = new WeaponAnimator(transform.GetChild(0).gameObject);
-        abilityAim = new AbilityAim(transform, offset, weaponAnimator.weapon);
         weaponAnimator.weaponAnimation.SetAnimationSettings(weaponAnimationData);
+        abilityAim = new AbilityAim(transform, offset, weaponAnimator.weapon);
     }
 
-    public void SetCurrentAbility(IdType id)
+    public void SetCurrentAbility(int index)
     {
-        abilityBook.currentAbility = AbilityFactory.GetAbilityByName(id);
-        AbilityColliderConfigurator.SetCollider(weaponAnimator.weapon, abilityBook.currentAbility);
+        currentAbility = AbilityFactory.GetAbilityByName(abilityBookData.abilityIdList[index]);
+        AbilityColliderConfigurator.SetCollider(weaponAnimator.weapon, currentAbility);
     }
 
     public void CastAbility()
     {
-        AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
-        AnimateAbility(abilityBook.currentAbility);
-        StartCoroutine(CoroutineInputBlockage(0.5f));
-        StartCoroutine(AbilityColliderConfigurator.WaitForSecondsToDisableCollider(weaponAnimator.weapon, 0.5f));
-        abilityBook.currentAbility.ProcessAbility();
+        if(!cooldownController.IsAbilityOnCooldown())
+        {
+            AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
+            AnimateAbility(currentAbility);
+            StartCoroutine(CoroutineInputBlockage(0.5f));
+            StartCoroutine(AbilityColliderConfigurator.WaitForSecondsToDisableCollider(weaponAnimator.weapon, 0.5f));
+            currentAbility.ProcessAbility();
+            cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
+        }
     }
 
     public void AnimateAbility(Ability ability)
@@ -59,20 +62,6 @@ public class AbilityController : MonoBehaviour
         BlockInputDelegate.Invoke(true);
         yield return new WaitForSeconds(seconds);
         BlockInputDelegate.Invoke(false);
-    }
-
-}
-
-public class AbilityBook
-{
-    public Ability currentAbility;
-    public CooldownController cooldownController;
-
-    public void Init(List<IdType> abilityIdList)
-    {
-        cooldownController = new CooldownController();
-        cooldownController.Init();
-        cooldownController.AddEntriesToCooldownDictionary(abilityIdList);
     }
 
 }

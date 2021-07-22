@@ -8,7 +8,7 @@ namespace QuestTales.Core.Abilities.Paladin
     public class HolyStrike : Ability
     {
         public override ControllerType controllerType => ControllerType.Player;
-        public override IdType abilityName => IdType.HolyStrike;
+        public override IdType abilityIdType => IdType.HolyStrike;
         public override RangeType abilityRange => RangeType.Melee;
         public override ColliderType abilityColliderType => ColliderType.Fan;
         public override AnimationType animationType => AnimationType.Circular;

@@ -24,6 +24,7 @@ public class AIController : UnitController
     public void SetupNavMeshAgent()
     {
         myAgent = GetComponent<NavMeshAgent>();
+        myAgent.enabled = true;
         myAgent.updateRotation = false;
         myAgent.updateUpAxis = false;
     }
@@ -35,26 +36,4 @@ public class AIController : UnitController
         float angle = abilityController.abilityAim.GetUnitCircleAimAngle();
         abilityController.abilityAim.AimWeaponTowardsDirection(angle,abilityController.offset);
     }
-    public void CallAbility()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            abilityController.SetCurrentAbility(IdType.Bash);
-            if (abilityController.abilityBook.currentAbility != null)
-            {
-                unitCombat.ReduceCooldown(0.85f);
-                if (unitCombat.attackCooldown < 0.1f)
-                {
-                    abilityController.CastAbility();
-                }
-            }
-        }
-    }
-
-    //public void Update()
-    //{
-    //    AimInput();
-    //    CallAbility();
-    //    detection.UpdateDetection(gameObject);
-    //}
 }

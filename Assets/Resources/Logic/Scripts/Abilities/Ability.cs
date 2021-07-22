@@ -31,20 +31,18 @@ namespace QuestTales.Core.Abilities
         Circular,
         Ranged,
     }
-
     public enum ControllerType
     {
         Player,
         AI,
     }
-
     public abstract class Ability
     {
         public AbilityColliderDetector abilityColliderDetector;
 
         public abstract ControllerType controllerType { get; }
 
-        public abstract IdType abilityName { get; }
+        public abstract IdType abilityIdType { get; }
 
         public abstract RangeType abilityRange { get; }
 
@@ -57,6 +55,35 @@ namespace QuestTales.Core.Abilities
         public abstract ColliderData colliderData { get; }
 
         public abstract AbilityStatsData abilityData { get; }
-    }
+
+   }
 }
+
+
+
+//public interface IAbilityFactory
+//{
+//    IAbilityProduct CreateAbilityProduct();
+//}
+
+//public interface IAbilityProduct
+//{
+//    void ProcessAbility();
+//}
+
+//public class AbFactory : IAbilityFactory
+//{
+//    public IAbilityProduct CreateAbilityProduct()
+//    {
+//        return new Fireball();
+//    }
+//}
+
+//public class Fireball : IAbilityProduct
+//{
+//    public void ProcessAbility()
+//    {
+//        throw new NotImplementedException();
+//    }
+//}
 

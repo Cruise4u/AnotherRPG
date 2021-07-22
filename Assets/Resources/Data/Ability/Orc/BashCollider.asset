@@ -16,5 +16,5 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   radius: 1
   length: 0
-  angle: 40
+  angle: 45
   vertices: 4

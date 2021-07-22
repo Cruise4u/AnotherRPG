@@ -8,7 +8,7 @@ namespace QuestTales.Core.Abilities.OrcGrunt
     {
         public override ControllerType controllerType => ControllerType.AI;
 
-        public override IdType abilityName => IdType.Bash;
+        public override IdType abilityIdType => IdType.Bash;
 
         public override RangeType abilityRange => RangeType.Melee;
 
@@ -22,7 +22,7 @@ namespace QuestTales.Core.Abilities.OrcGrunt
 
         public override void ProcessAbility()
         {
-            throw new NotImplementedException();
+            Debug.Log("Attack!!!!");
         }
     }
 }

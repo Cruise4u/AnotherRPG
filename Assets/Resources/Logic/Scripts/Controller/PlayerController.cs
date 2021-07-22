@@ -50,22 +50,16 @@ public class PlayerController : UnitController
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            abilityController.SetCurrentAbility(IdType.HolyStrike);
+            abilityController.cooldownController.lastSelectedId = 0;
+            abilityController.SetCurrentAbility(abilityController.cooldownController.lastSelectedId);
         }
     }
 
     public void AbilityInput()
     {
-        if (abilityController.abilityBook.currentAbility != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            unitCombat.ReduceCooldown(0.85f);
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (unitCombat.attackCooldown < 0.1f)
-                {
-                    abilityController.CastAbility();
-                }
-            }
+            abilityController.CastAbility();
         }
     }
 

@@ -22,7 +22,7 @@ public static class AbilityFactory
         foreach(var type in abilityTypes)
         {
             var reference = Activator.CreateInstance(type) as Ability;
-            abilityDictionary.Add(reference.abilityName, type);
+            abilityDictionary.Add(reference.abilityIdType, type);
         }
     }
 
@@ -40,31 +40,3 @@ public static class AbilityFactory
         }
     }
 }
-
-public class AbilityCreator
-{
-    private List<IdType> abilityIdTypeList;
-    public Dictionary<IdType, Ability> abilityDictionary;
-
-    public AbilityCreator(List<IdType> abilityIdTypeList)
-    {
-        this.abilityIdTypeList = abilityIdTypeList;
-
-    }
-
-    public void Init()
-    {
-        abilityDictionary = new Dictionary<IdType, Ability>();
-    }
-
-    public void CreateAbilityOnDemand()
-    {
-
-    }
-
-
-
-
-
-}
-

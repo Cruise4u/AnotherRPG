@@ -87,10 +87,12 @@ public static class AbilityColliderConfigurator
         if (weapon.GetComponent<Collider2D>())
         {
             weapon.GetComponent<Collider2D>().enabled = true;
+            weapon.GetComponent<Collider2D>().isTrigger = true;
         }
         else if (weapon.GetComponent<BaseCustomCollider>())
         {
             weapon.GetComponent<BaseCustomCollider>().enabled = true;
+            weapon.GetComponent<PolygonCollider2D>().isTrigger = true;
         }
     }
 
