@@ -31,3 +31,19 @@ public interface ICaster
 {
 
 }
+
+public interface IPushable
+{
+    void Push(Vector3 direction);
+}
+
+public interface IPusher
+{
+    Vector3 pushDirection { get; set; }
+    void PushEnemy(IPushable pushable);
+}
+
+public interface IDefeatable
+{
+    void Defeat();
+}

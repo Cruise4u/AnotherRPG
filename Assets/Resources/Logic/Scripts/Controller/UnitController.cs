@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public abstract class UnitController : MonoBehaviour
 {
     protected AbilityController abilityController;
-    protected UnitCombat unitCombat;
+    protected CombatController combatController;
     protected bool isInputBlocked;
 
     public abstract void AimInput();
@@ -24,7 +24,7 @@ public abstract class UnitController : MonoBehaviour
 
     public virtual void Init()
     {
-        unitCombat = new UnitCombat();
+        combatController = GetComponent<CombatController>();
         abilityController = GetComponent<AbilityController>();
         abilityController.Init();
         abilityController.BlockInputDelegate += ToggleInputBlockage;

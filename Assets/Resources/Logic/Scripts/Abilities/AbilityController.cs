@@ -6,15 +6,18 @@ using System.Collections.Generic;
 
 public class AbilityController : MonoBehaviour
 {
+    public WeaponAnimator weaponAnimator;
+    public WeaponAnimationData weaponAnimationData;
     public Ability currentAbility;
     public AbilityAim abilityAim;
     public AbilityBookData abilityBookData;
+    public AbilityHitCollider abilityHitCollider;
     public CooldownController cooldownController;
-    public WeaponAnimator weaponAnimator;
-    public WeaponAnimationData weaponAnimationData;
+
 
     public Vector2 offset;
     public Action<bool> BlockInputDelegate;
+
 
     public void Init()
     {
@@ -22,6 +25,8 @@ public class AbilityController : MonoBehaviour
         weaponAnimator = new WeaponAnimator(transform.GetChild(0).gameObject);
         weaponAnimator.weaponAnimation.SetAnimationSettings(weaponAnimationData);
         abilityAim = new AbilityAim(transform, offset, weaponAnimator.weapon);
+        abilityHitCollider = gameObject.transform.GetChild(0).GetComponent<AbilityHitCollider>();
+        cooldownController = GetComponent<CooldownController>();
     }
 
     public void SetCurrentAbility(int index)
@@ -36,24 +41,33 @@ public class AbilityController : MonoBehaviour
         {
             AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
             AnimateAbility(currentAbility);
-            StartCoroutine(CoroutineInputBlockage(0.5f));
-            StartCoroutine(AbilityColliderConfigurator.WaitForSecondsToDisableCollider(weaponAnimator.weapon, 0.5f));
-            currentAbility.ProcessAbility();
+            StartCoroutine(CheckIfAbilityHittedTarget());
+            StartCoroutine(CoroutineInputBlockage(1.0f));
+            StartCoroutine(AbilityColliderConfigurator.WaitForSecondsToDisableCollider(weaponAnimator.weapon, 0.3f));
             cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
         }
     }
 
+    public IEnumerator CheckIfAbilityHittedTarget()
+    {
+        yield return new WaitForSeconds(0.25f);
+        currentAbility.ProcessAbility(abilityHitCollider.hittedTargetsList);
+    }
+
     public void AnimateAbility(Ability ability)
     {
-        var data = ability.colliderData;
-        switch (ability.animationType)
+        if(ability != null)
         {
-            case AnimationType.Swing:
-                StartCoroutine(weaponAnimator.weaponAnimation.CoroutineSwingTweenAnimation(this));
-                break;
-            case AnimationType.Circular:
-                StartCoroutine(weaponAnimator.weaponAnimation.CoroutineFullCircleTweenAnimation(this));
-                break;
+            var data = ability.colliderData;
+            switch (ability.animationType)
+            {
+                case AnimationType.Swing:
+                    StartCoroutine(weaponAnimator.weaponAnimation.CoroutineSwingTweenAnimation(this));
+                    break;
+                case AnimationType.Circular:
+                    StartCoroutine(weaponAnimator.weaponAnimation.CoroutineFullCircleTweenAnimation(this));
+                    break;
+            }
         }
     }
 

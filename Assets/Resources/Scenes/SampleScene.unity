@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 157788600}
   m_Layer: 6
   m_Name: PlayerDamageReceiver
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2643,7 +2643,7 @@ GameObject:
   - component: {fileID: 937005733}
   m_Layer: 0
   m_Name: DetectionProbe
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3111,7 +3111,7 @@ GameObject:
   - component: {fileID: 1701720469}
   m_Layer: 0
   m_Name: EnemyDamageReceiver
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3140,7 +3140,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.1218614, y: 0.18735927}
@@ -3157,8 +3157,8 @@ GameObject:
   - component: {fileID: 1878410853}
   - component: {fileID: 1878410851}
   m_Layer: 0
-  m_Name: WeaponSlot
-  m_TagString: Untagged
+  m_Name: EnemyOrcWeaponSlot
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3175,7 +3175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351475a0c2f0cdc429d2d5a0ebc0f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSlot: {fileID: 1878410850}
+  hittedTargetsList: []
 --- !u!4 &1878410853
 Transform:
   m_ObjectHideFlags: 0
@@ -3211,6 +3211,8 @@ GameObject:
   - component: {fileID: 2026788700}
   - component: {fileID: 2026788696}
   - component: {fileID: 2026788707}
+  - component: {fileID: 2026788708}
+  - component: {fileID: 2026788709}
   m_Layer: 0
   m_Name: EnemyOrc
   m_TagString: Enemy
@@ -3230,9 +3232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7c4a5df7634a24491197245c097050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityBookData: {fileID: 11400000, guid: 7370872d55f509043ba785f2ef56d926, type: 2}
-  cooldownController: {fileID: 2026788707}
   weaponAnimationData: {fileID: 11400000, guid: 396fcf8caf770b44dbd3995e756d18bd, type: 2}
+  abilityBookData: {fileID: 11400000, guid: 7370872d55f509043ba785f2ef56d926, type: 2}
+  abilityHitCollider: {fileID: 1878410851}
+  cooldownController: {fileID: 2026788707}
   offset: {x: 0.1, y: 0.25}
 --- !u!114 &2026788697
 MonoBehaviour:
@@ -3370,7 +3373,7 @@ Transform:
   - {fileID: 1701720468}
   - {fileID: 937005733}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2026788703
 MonoBehaviour:
@@ -3457,6 +3460,32 @@ MonoBehaviour:
   - 0
   abilityReadyList: 00
   lastSelectedId: 0
+--- !u!114 &2026788708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026788695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1a83db8aaa6d045be76e9d9f8ff56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 2026788709}
+--- !u!114 &2026788709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026788695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5f38def692c144a86c4530e29dc937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitStatsData: {fileID: 11400000, guid: 9c96f863a65c7f64382a16a6ef0a98e9, type: 2}
 --- !u!1 &2032183220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,6 +3648,7 @@ GameObject:
   - component: {fileID: 1826071011730595399}
   - component: {fileID: 1826071011730595398}
   - component: {fileID: 1826071011730595407}
+  - component: {fileID: 1826071011730595408}
   m_Layer: 6
   m_Name: PlayerHero
   m_TagString: Player
@@ -3638,9 +3668,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7c4a5df7634a24491197245c097050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityBookData: {fileID: 11400000, guid: 516a9b87d8376804d86a8c38d3262cc4, type: 2}
-  cooldownController: {fileID: 1826071011730595407}
   weaponAnimationData: {fileID: 11400000, guid: e877adf0594aaeb42b7786ce323698a9, type: 2}
+  abilityBookData: {fileID: 11400000, guid: 516a9b87d8376804d86a8c38d3262cc4, type: 2}
+  abilityHitCollider: {fileID: 5380778355623924743}
+  cooldownController: {fileID: 1826071011730595407}
   offset: {x: 0.15, y: 0.5}
 --- !u!114 &1826071011730595399
 MonoBehaviour:
@@ -3675,12 +3706,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1826071011730595397}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba5f38def692c144a86c4530e29dc937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStatsData: {fileID: 11400000, guid: afcb0825d2f2a724ca0b692580368ed5, type: 2}
+  unitStatsData: {fileID: 11400000, guid: dc10ad4b26d62c8438d6ebaaa1b2bd4f, type: 2}
 --- !u!212 &1826071011730595402
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3747,7 +3778,7 @@ Transform:
   - {fileID: 157788599}
   - {fileID: 1453774012}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1826071011730595404
 CircleCollider2D:
@@ -3778,9 +3809,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"nest":{"source":"Embed","macro":null,"embed":{"title":null,"summary":null,"pan":{"x":0.0,"y":0.0},"zoom":1.0,"elements":[{"nest":{"source":"Embed","macro":null,"embed":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":"Start","summary":null,"pan":{"x":319.9,"y":41.85715},"zoom":0.6999999,"elements":[{"coroutine":false,"defaultValues":{},"position":{"x":-348.0,"y":142.0},"guid":"f1a8cd09-6888-4179-8cf2-2fc25beea838","$version":"A","$type":"Bolt.Update","$id":"14"},{"chainable":false,"member":{"name":"AddCooldownToList","parameterTypes":["System.Collections.Generic.List`1[[QuestTales.Core.Abilities.IdType,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"],"targetType":"CooldownController","targetTypeName":"CooldownController","$version":"A"},"defaultValues":{"target":null},"position":{"x":644.0,"y":-266.0},"guid":"64a87778-a8f9-40ba-b5de-ce6a3beae959","$version":"A","$type":"Bolt.InvokeMember","$id":"16"},{"member":{"name":"abilityIdList","parameterTypes":null,"targetType":"AbilityBookData","targetTypeName":"AbilityBookData","$version":"A"},"defaultValues":{"target":null},"position":{"x":337.0,"y":-106.0},"guid":"3814c57e-f07a-43ec-b56f-c4c430f20a19","$version":"A","$type":"Bolt.GetMember","$id":"19"},{"member":{"name":"abilityIdList","parameterTypes":null,"targetType":"AbilityBookData","targetTypeName":"AbilityBookData","$version":"A"},"defaultValues":{"target":null},"position":{"x":-100.0,"y":290.0},"guid":"33ab6d2e-76a9-4bd3-a049-36aa70feadc0","$version":"A","$type":"Bolt.GetMember","$id":"22"},{"member":{"name":"abilityBookData","parameterTypes":null,"targetType":"AbilityController","targetTypeName":"AbilityController","$version":"A"},"defaultValues":{"target":null},"position":{"x":-352.0,"y":290.0},"guid":"4d60f5ea-8202-4d67-92e7-55aabbecc6d7","$version":"A","$type":"Bolt.GetMember","$id":"25"},{"member":{"name":"abilityBookData","parameterTypes":null,"targetType":"AbilityController","targetTypeName":"AbilityController","$version":"A"},"defaultValues":{"target":null},"position":{"x":71.0,"y":-106.0},"guid":"19cd7d8b-9e16-4d08-96cd-6226cca154bc","$version":"A","$type":"Bolt.GetMember","$id":"28"},{"chainable":false,"member":{"name":"Init","parameterTypes":[],"targetType":"CooldownController","targetTypeName":"CooldownController","$version":"A"},"defaultValues":{"target":null},"position":{"x":326.0,"y":-266.0},"guid":"a08ddf76-d516-40e8-8c89-51a2824423c3","$version":"A","$type":"Bolt.InvokeMember","$id":"31"},{"chainable":false,"member":{"name":"UpdatePlayerController","parameterTypes":[],"targetType":"PlayerController","targetTypeName":"PlayerController","$version":"A"},"defaultValues":{"target":null},"position":{"x":658.0,"y":145.0},"guid":"6acf1f71-9ed8-4a82-b9a3-df950edd1c55","$version":"A","$type":"Bolt.InvokeMember","$id":"34"},{"chainable":false,"member":{"name":"Init","parameterTypes":[],"targetType":"PlayerController","targetTypeName":"PlayerController","$version":"A"},"defaultValues":{"target":null},"position":{"x":76.0,"y":-266.0},"guid":"3f83436a-9a4e-44c9-b70d-46105980ac68","$version":"A","$type":"Bolt.InvokeMember","$id":"37"},{"chainable":false,"member":{"name":"IterateThroughAbilitiesOnCooldown","parameterTypes":["System.Collections.Generic.List`1[[QuestTales.Core.Abilities.IdType,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"],"targetType":"CooldownController","targetTypeName":"CooldownController","$version":"A"},"defaultValues":{"target":null},"position":{"x":243.0,"y":144.0},"guid":"465acf0b-2371-4b8b-928f-31643394bd82","$version":"A","$type":"Bolt.InvokeMember","$id":"40"},{"coroutine":false,"defaultValues":{},"position":{"x":-224.0,"y":-265.0},"guid":"c101f7d9-b73a-4104-bd60-475c084f4e6b","$version":"A","$type":"Bolt.Start","$id":"43"},{"sourceUnit":{"$ref":"43"},"sourceKey":"trigger","destinationUnit":{"$ref":"37"},"destinationKey":"enter","guid":"50b43779-427e-4c2a-8471-93d824739b90","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"37"},"sourceKey":"exit","destinationUnit":{"$ref":"31"},"destinationKey":"enter","guid":"bb0517ba-f72a-41a1-921d-859138121960","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"14"},"sourceKey":"trigger","destinationUnit":{"$ref":"40"},"destinationKey":"enter","guid":"f9a7e093-1bbf-4d6a-a1fd-3224b2f76df4","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"40"},"sourceKey":"exit","destinationUnit":{"$ref":"34"},"destinationKey":"enter","guid":"1fadb5b3-8744-4629-ba91-1876a6520324","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"31"},"sourceKey":"exit","destinationUnit":{"$ref":"16"},"destinationKey":"enter","guid":"88ef6095-95b4-47b7-96a1-1e692a163088","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"25"},"sourceKey":"value","destinationUnit":{"$ref":"22"},"destinationKey":"target","guid":"b7ceb274-86c5-431d-8c82-019021185e95","$type":"Bolt.ValueConnection"},{"sourceUnit":{"$ref":"22"},"sourceKey":"value","destinationUnit":{"$ref":"40"},"destinationKey":"%abilityIdList","guid":"c5410090-7d9f-4045-b906-a26463094fc5","$type":"Bolt.ValueConnection"},{"sourceUnit":{"$ref":"28"},"sourceKey":"value","destinationUnit":{"$ref":"19"},"destinationKey":"target","guid":"a17b3f29-2db7-40b4-818f-bd4246216d69","$type":"Bolt.ValueConnection"},{"sourceUnit":{"$ref":"19"},"sourceKey":"value","destinationUnit":{"$ref":"16"},"destinationKey":"%abilityIdList","guid":"da3435eb-67ca-41b8-a704-05a57ee3c6c1","$type":"Bolt.ValueConnection"}],"$version":"A"}},"isStart":true,"position":{"x":-154.0,"y":-93.0},"width":170.0,"guid":"c2a29c94-64c9-4cf9-ba20-c33befd59e0d","$version":"A","$type":"Bolt.FlowState"}],"$version":"A"}}}'
+    _json: '{"nest":{"source":"Embed","macro":null,"embed":{"title":null,"summary":null,"pan":{"x":0.0,"y":0.0},"zoom":1.0,"elements":[{"nest":{"source":"Embed","macro":null,"embed":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":"Start","summary":null,"pan":{"x":319.9,"y":41.85715},"zoom":0.6999999,"elements":[{"coroutine":false,"defaultValues":{},"position":{"x":-348.0,"y":142.0},"guid":"f1a8cd09-6888-4179-8cf2-2fc25beea838","$version":"A","$type":"Bolt.Update","$id":"14"},{"coroutine":false,"defaultValues":{},"position":{"x":-224.0,"y":-265.0},"guid":"c101f7d9-b73a-4104-bd60-475c084f4e6b","$version":"A","$type":"Bolt.Start","$id":"16"},{"chainable":false,"member":{"name":"Init","parameterTypes":[],"targetType":"PlayerController","targetTypeName":"PlayerController","$version":"A"},"defaultValues":{"target":null},"position":{"x":76.0,"y":-266.0},"guid":"3f83436a-9a4e-44c9-b70d-46105980ac68","$version":"A","$type":"Bolt.InvokeMember","$id":"18"},{"chainable":false,"member":{"name":"UpdatePlayerController","parameterTypes":[],"targetType":"PlayerController","targetTypeName":"PlayerController","$version":"A"},"defaultValues":{"target":null},"position":{"x":658.0,"y":145.0},"guid":"6acf1f71-9ed8-4a82-b9a3-df950edd1c55","$version":"A","$type":"Bolt.InvokeMember","$id":"21"},{"chainable":false,"member":{"name":"Init","parameterTypes":[],"targetType":"CooldownController","targetTypeName":"CooldownController","$version":"A"},"defaultValues":{"target":null},"position":{"x":326.0,"y":-266.0},"guid":"a08ddf76-d516-40e8-8c89-51a2824423c3","$version":"A","$type":"Bolt.InvokeMember","$id":"24"},{"chainable":false,"member":{"name":"IterateThroughAbilitiesOnCooldown","parameterTypes":["System.Collections.Generic.List`1[[QuestTales.Core.Abilities.IdType,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"],"targetType":"CooldownController","targetTypeName":"CooldownController","$version":"A"},"defaultValues":{"target":null},"position":{"x":243.0,"y":144.0},"guid":"465acf0b-2371-4b8b-928f-31643394bd82","$version":"A","$type":"Bolt.InvokeMember","$id":"27"},{"member":{"name":"abilityBookData","parameterTypes":null,"targetType":"AbilityController","targetTypeName":"AbilityController","$version":"A"},"defaultValues":{"target":null},"position":{"x":-352.0,"y":290.0},"guid":"4d60f5ea-8202-4d67-92e7-55aabbecc6d7","$version":"A","$type":"Bolt.GetMember","$id":"30"},{"member":{"name":"abilityIdList","parameterTypes":null,"targetType":"AbilityBookData","targetTypeName":"AbilityBookData","$version":"A"},"defaultValues":{"target":null},"position":{"x":-100.0,"y":290.0},"guid":"33ab6d2e-76a9-4bd3-a049-36aa70feadc0","$version":"A","$type":"Bolt.GetMember","$id":"33"},{"member":{"name":"abilityIdList","parameterTypes":null,"targetType":"AbilityBookData","targetTypeName":"AbilityBookData","$version":"A"},"defaultValues":{"target":null},"position":{"x":337.0,"y":-106.0},"guid":"3814c57e-f07a-43ec-b56f-c4c430f20a19","$version":"A","$type":"Bolt.GetMember","$id":"36"},{"chainable":false,"member":{"name":"AddCooldownToList","parameterTypes":["System.Collections.Generic.List`1[[QuestTales.Core.Abilities.IdType,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"],"targetType":"CooldownController","targetTypeName":"CooldownController","$version":"A"},"defaultValues":{"target":null},"position":{"x":644.0,"y":-266.0},"guid":"64a87778-a8f9-40ba-b5de-ce6a3beae959","$version":"A","$type":"Bolt.InvokeMember","$id":"39"},{"member":{"name":"abilityBookData","parameterTypes":null,"targetType":"AbilityController","targetTypeName":"AbilityController","$version":"A"},"defaultValues":{"target":null},"position":{"x":71.0,"y":-106.0},"guid":"19cd7d8b-9e16-4d08-96cd-6226cca154bc","$version":"A","$type":"Bolt.GetMember","$id":"42"},{"sourceUnit":{"$ref":"16"},"sourceKey":"trigger","destinationUnit":{"$ref":"18"},"destinationKey":"enter","guid":"50b43779-427e-4c2a-8471-93d824739b90","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"18"},"sourceKey":"exit","destinationUnit":{"$ref":"24"},"destinationKey":"enter","guid":"bb0517ba-f72a-41a1-921d-859138121960","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"14"},"sourceKey":"trigger","destinationUnit":{"$ref":"27"},"destinationKey":"enter","guid":"f9a7e093-1bbf-4d6a-a1fd-3224b2f76df4","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"27"},"sourceKey":"exit","destinationUnit":{"$ref":"21"},"destinationKey":"enter","guid":"1fadb5b3-8744-4629-ba91-1876a6520324","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"24"},"sourceKey":"exit","destinationUnit":{"$ref":"39"},"destinationKey":"enter","guid":"88ef6095-95b4-47b7-96a1-1e692a163088","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"33"},"sourceKey":"value","destinationUnit":{"$ref":"27"},"destinationKey":"%abilityIdList","guid":"c5410090-7d9f-4045-b906-a26463094fc5","$type":"Bolt.ValueConnection"},{"sourceUnit":{"$ref":"42"},"sourceKey":"value","destinationUnit":{"$ref":"36"},"destinationKey":"target","guid":"a17b3f29-2db7-40b4-818f-bd4246216d69","$type":"Bolt.ValueConnection"},{"sourceUnit":{"$ref":"30"},"sourceKey":"value","destinationUnit":{"$ref":"33"},"destinationKey":"target","guid":"b7ceb274-86c5-431d-8c82-019021185e95","$type":"Bolt.ValueConnection"},{"sourceUnit":{"$ref":"36"},"sourceKey":"value","destinationUnit":{"$ref":"39"},"destinationKey":"%abilityIdList","guid":"da3435eb-67ca-41b8-a704-05a57ee3c6c1","$type":"Bolt.ValueConnection"}],"$version":"A"}},"isStart":true,"position":{"x":-154.0,"y":-93.0},"width":170.0,"guid":"c2a29c94-64c9-4cf9-ba20-c33befd59e0d","$version":"A","$type":"Bolt.FlowState"}],"$version":"A"}}}'
     _objectReferences: []
 --- !u!114 &1826071011730595406
 MonoBehaviour:
@@ -3813,6 +3844,19 @@ MonoBehaviour:
   - 0
   abilityReadyList: 00
   lastSelectedId: 0
+--- !u!114 &1826071011730595408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826071011730595397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1a83db8aaa6d045be76e9d9f8ff56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 1826071011730595401}
 --- !u!1 &1826071013651327045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,8 +3868,8 @@ GameObject:
   - component: {fileID: 1826071013651327050}
   - component: {fileID: 5380778355623924743}
   m_Layer: 6
-  m_Name: WeaponSlot
-  m_TagString: Untagged
+  m_Name: PlayerWeaponSlot
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3917,4 +3961,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351475a0c2f0cdc429d2d5a0ebc0f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSlot: {fileID: 1826071013651327045}
+  hittedTargetsList: []

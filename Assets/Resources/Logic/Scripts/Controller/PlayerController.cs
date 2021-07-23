@@ -57,7 +57,7 @@ public class PlayerController : UnitController
 
     public void AbilityInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && abilityController.currentAbility != null)
         {
             abilityController.CastAbility();
         }

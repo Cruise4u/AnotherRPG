@@ -63,7 +63,6 @@ public static class AbilityColliderConfigurator
     {
         if (weapon.GetComponent<Collider2D>())
         {
-            Debug.Log("Is this working?");
             UnityEngine.Object.Destroy(weapon.GetComponent<FanCollider2D>());
             //UnityEngine.Object.Destroy(weapon.GetComponent<TriangleCollider2D>());
             //UnityEngine.Object.Destroy(weapon.GetComponent<Collider2D>());

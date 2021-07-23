@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace QuestTales.Core.Abilities
@@ -38,7 +39,7 @@ namespace QuestTales.Core.Abilities
     }
     public abstract class Ability
     {
-        public AbilityColliderDetector abilityColliderDetector;
+        public AbilityHitCollider abilityColliderDetector;
 
         public abstract ControllerType controllerType { get; }
 
@@ -50,7 +51,7 @@ namespace QuestTales.Core.Abilities
 
         public abstract AnimationType animationType { get; }
 
-        public abstract void ProcessAbility();
+        public abstract void ProcessAbility(List<GameObject> targets);
 
         public abstract ColliderData colliderData { get; }
 

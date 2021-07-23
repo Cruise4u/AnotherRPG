@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using QuestTales.Core.Abilities;
 using UnityEngine;
 
 namespace QuestTales.Core.Abilities.OrcGrunt
 {
-    public class Bash : Ability
+    public class Bash : Ability, IDamager
     {
         public override ControllerType controllerType => ControllerType.AI;
 
@@ -20,9 +21,17 @@ namespace QuestTales.Core.Abilities.OrcGrunt
 
         public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Orc/BashStatsData");
 
-        public override void ProcessAbility()
+        public void DealDamage(IDamagable damagable)
         {
-            Debug.Log("Attack!!!!");
+            damagable.TakeDamage(abilityData.power);
+        }
+
+        public override void ProcessAbility(List<GameObject> targets)
+        {
+            foreach(GameObject target in targets)
+            {
+                DealDamage(target.GetComponent<CombatController>());
+            }
         }
     }
 }
