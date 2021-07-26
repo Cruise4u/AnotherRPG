@@ -32,8 +32,8 @@ public class WeaponAnimation
         Quaternion initialRotation = Quaternion.Euler(0, 0, -initialAngle);
         Quaternion finalRotation = Quaternion.Euler(0, 0, -finalAngle);
         Tween forwardLungeTween = abilityController.transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.15f).SetEase(Ease.Linear);
-        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(initialRotation.eulerAngles, 0.1f));
-        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(finalRotation.eulerAngles, 0.2f));
+        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(initialRotation.eulerAngles, 0.15f));
+        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(finalRotation.eulerAngles, 0.15f));
         sequence.Play();
         yield return forwardLungeTween.WaitForCompletion();
         abilityController.BlockInputDelegate.Invoke(false);

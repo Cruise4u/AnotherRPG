@@ -34,12 +34,12 @@ public interface ICaster
 
 public interface IPushable
 {
-    void Push(Vector3 direction);
+    Vector3 pushDirection { get; set; }
+    void Push(Vector3 pushDirection);
 }
 
 public interface IPusher
 {
-    Vector3 pushDirection { get; set; }
     void PushEnemy(IPushable pushable);
 }
 

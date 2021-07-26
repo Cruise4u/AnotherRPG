@@ -11,7 +11,7 @@ public class AbilityController : MonoBehaviour
     public Ability currentAbility;
     public AbilityAim abilityAim;
     public AbilityBookData abilityBookData;
-    public AbilityHitCollider abilityHitCollider;
+    public AbilityHitHandler abilityHitCollider;
     public CooldownController cooldownController;
 
 
@@ -25,7 +25,7 @@ public class AbilityController : MonoBehaviour
         weaponAnimator = new WeaponAnimator(transform.GetChild(0).gameObject);
         weaponAnimator.weaponAnimation.SetAnimationSettings(weaponAnimationData);
         abilityAim = new AbilityAim(transform, offset, weaponAnimator.weapon);
-        abilityHitCollider = gameObject.transform.GetChild(0).GetComponent<AbilityHitCollider>();
+        abilityHitCollider = gameObject.transform.GetChild(0).GetComponent<AbilityHitHandler>();
         cooldownController = GetComponent<CooldownController>();
     }
 
@@ -50,7 +50,7 @@ public class AbilityController : MonoBehaviour
 
     public IEnumerator CheckIfAbilityHittedTarget()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.3f);
         currentAbility.ProcessAbility(abilityHitCollider.hittedTargetsList);
     }
 

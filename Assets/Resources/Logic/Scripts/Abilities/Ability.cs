@@ -39,7 +39,7 @@ namespace QuestTales.Core.Abilities
     }
     public abstract class Ability
     {
-        public AbilityHitCollider abilityColliderDetector;
+        public AbilityHitHandler abilityColliderDetector;
 
         public abstract ControllerType controllerType { get; }
 
@@ -57,7 +57,12 @@ namespace QuestTales.Core.Abilities
 
         public abstract AbilityStatsData abilityData { get; }
 
-   }
+        public virtual IEnumerator DisableColliderAfterSeconds(GameObject weapon, float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            AbilityColliderConfigurator.DisableCollider(weapon);
+        }
+    }
 }
 
 

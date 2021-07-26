@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class PlayerController : UnitController
 {
-    private CameraManager cameraManager;
+    private CameraHandler cameraManager;
     private NavigationAgent myAgent;
 
     public override void Init()
     {
         base.Init();
-        cameraManager = FindObjectOfType<CameraManager>();
+        cameraManager = FindObjectOfType<CameraHandler>();
         myAgent = GetComponent<NavigationAgent>();
     }
 

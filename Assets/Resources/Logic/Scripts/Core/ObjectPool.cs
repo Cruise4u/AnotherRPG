@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ObjectPool : MonoBehaviour
 {
     [Serializable]
@@ -41,21 +42,17 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public void ReturnToPool(GameObject obj, string poolName)
+    public void ReturnToPool(string poolName,GameObject obj)
     {
         obj.SetActive(false);
         poolDictionary[poolName].Enqueue(obj);
     }
 
-    public GameObject SpawnPoolObject(string name, Vector3 position)
+    public GameObject SpawnPoolObject(string poolName, Vector3 position)
     {
-        GameObject spawnGO = poolDictionary[name].Dequeue();
-
+        GameObject spawnGO = poolDictionary[poolName].Dequeue();
         spawnGO.SetActive(true);
         spawnGO.transform.position = position;
-
-        //poolDictionary[name].Enqueue(spawnGO);
-
         return spawnGO;
     }
 }

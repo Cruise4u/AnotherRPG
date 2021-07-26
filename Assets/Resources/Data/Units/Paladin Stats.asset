@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd03af7930a1824e9cc7fbe5e5161b4, type: 3}
   m_Name: Paladin Stats
   m_EditorClassIdentifier: 
-  health: 0
+  health: 50
   mana: 0
   stamina: 0
   power: 0

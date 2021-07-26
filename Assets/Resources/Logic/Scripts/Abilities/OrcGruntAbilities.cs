@@ -28,9 +28,12 @@ namespace QuestTales.Core.Abilities.OrcGrunt
 
         public override void ProcessAbility(List<GameObject> targets)
         {
-            foreach(GameObject target in targets)
+            if(targets != null & targets.Count > 0)
             {
-                DealDamage(target.GetComponent<CombatController>());
+                foreach (GameObject target in targets)
+                {
+                    DealDamage(target.transform.parent.GetComponent<UnitPhysiology>());
+                }
             }
         }
     }
