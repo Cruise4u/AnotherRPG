@@ -36,13 +36,6 @@ public class AbilityHitHandler : MonoBehaviour
         }
     }
 
-    public void CheckIfTargetIsColliding()
-    {
-        
-    }
-
-
-
     public void MarkTarget(GameObject target)
     {
         if(!hittedTargetsList.Contains(target))

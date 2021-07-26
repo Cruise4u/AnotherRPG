@@ -6,12 +6,10 @@ using UnityEngine;
 namespace QuestTales.Core.Abilities.OrcGrunt
 {
     public class Bash : Ability, IDamager
-    {
-        public override ControllerType controllerType => ControllerType.AI;
+    { 
+        public override IdType idType => IdType.Bash;
 
-        public override IdType abilityIdType => IdType.Bash;
-
-        public override RangeType abilityRange => RangeType.Melee;
+        public override RangeType rangeType => RangeType.Melee;
 
         public override ColliderType abilityColliderType => ColliderType.Fan;
 
@@ -20,6 +18,10 @@ namespace QuestTales.Core.Abilities.OrcGrunt
         public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Orc/BashCollider");
 
         public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Orc/BashStatsData");
+
+        public override string abilityParticlePoolName => throw new NotImplementedException();
+
+        public override string abilityRangedObjectPoolName => throw new NotImplementedException();
 
         public void DealDamage(IDamagable damagable)
         {

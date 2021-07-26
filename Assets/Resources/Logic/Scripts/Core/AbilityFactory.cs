@@ -22,7 +22,7 @@ public static class AbilityFactory
         foreach(var type in abilityTypes)
         {
             var reference = Activator.CreateInstance(type) as Ability;
-            abilityDictionary.Add(reference.abilityIdType, type);
+            abilityDictionary.Add(reference.idType, type);
         }
     }
 

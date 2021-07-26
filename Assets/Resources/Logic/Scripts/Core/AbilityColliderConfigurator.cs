@@ -9,7 +9,7 @@ public static class AbilityColliderConfigurator
     public static void SetCollider(GameObject weapon,Ability ability)
     {
         RemoveUnusedColliders(weapon);
-        if (ability.abilityRange == RangeType.Melee)
+        if (ability.rangeType == RangeType.Melee)
         {
             switch (ability.abilityColliderType)
             {

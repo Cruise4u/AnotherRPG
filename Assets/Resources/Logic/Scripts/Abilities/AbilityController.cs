@@ -39,18 +39,28 @@ public class AbilityController : MonoBehaviour
     {
         if(!cooldownController.IsAbilityOnCooldown())
         {
-            AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
-            AnimateAbility(currentAbility);
-            StartCoroutine(CheckIfAbilityHittedTarget());
-            StartCoroutine(CoroutineInputBlockage(1.0f));
-            StartCoroutine(AbilityColliderConfigurator.WaitForSecondsToDisableCollider(weaponAnimator.weapon, 0.3f));
-            cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
+            if(currentAbility.rangeType != RangeType.Range)
+            {
+                AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
+                AnimateAbility(currentAbility);
+                StartCoroutine(WaitForSecondsBeforeProcessingAbility(0.25f));
+                StartCoroutine(CoroutineInputBlockage(0.85f));
+                cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
+            }
+            else
+            {
+                AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
+                AnimateAbility(currentAbility);
+                StartCoroutine(WaitForSecondsBeforeProcessingAbility(0.25f));
+                StartCoroutine(CoroutineInputBlockage(0.85f));
+                cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
+            }
         }
     }
 
-    public IEnumerator CheckIfAbilityHittedTarget()
+    public IEnumerator WaitForSecondsBeforeProcessingAbility(float time)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(time);
         currentAbility.ProcessAbility(abilityHitCollider.hittedTargetsList);
     }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 
-public class UnitPhysiology : MonoBehaviour,IDamagable,IDefeatable,IPushable
+public class UnitPhysiology : MonoBehaviour,IDamagable,IDefeatable,IPushable,IStunnable
 {
     public BaseStats stats;
     public UnitUIHandler unitUIHandler;
@@ -49,4 +49,8 @@ public class UnitPhysiology : MonoBehaviour,IDamagable,IDefeatable,IPushable
         transform.DOMove(direction, 0.1f);
     }
 
+    public void GetStunned()
+    {
+        Debug.Log("Stun target!");
+    }
 }

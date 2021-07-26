@@ -12,6 +12,16 @@ public interface IDamager
     void DealDamage(IDamagable damagable);
 }
 
+public interface IStunner
+{
+    void Stun(IStunnable stunnable);
+}
+
+public interface IStunnable
+{
+    void GetStunned();
+}
+
 public interface IMovable
 {
     void Move(Vector3 position);
@@ -20,16 +30,6 @@ public interface IMovable
 public interface IMover
 {
     void MoveObject(IMovable movable);
-}
-
-public interface ICastable
-{
-
-}
-
-public interface ICaster
-{
-
 }
 
 public interface IPushable

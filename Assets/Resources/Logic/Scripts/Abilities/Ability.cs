@@ -27,25 +27,18 @@ namespace QuestTales.Core.Abilities
     }
     public enum AnimationType
     {
-        Swing,
-        Stab,
         Circular,
         Ranged,
-    }
-    public enum ControllerType
-    {
-        Player,
-        AI,
+        Swing,
+        Stab,
     }
     public abstract class Ability
     {
         public AbilityHitHandler abilityColliderDetector;
 
-        public abstract ControllerType controllerType { get; }
+        public abstract IdType idType { get; }
 
-        public abstract IdType abilityIdType { get; }
-
-        public abstract RangeType abilityRange { get; }
+        public abstract RangeType rangeType { get; }
 
         public abstract ColliderType abilityColliderType { get; }
 
@@ -57,11 +50,17 @@ namespace QuestTales.Core.Abilities
 
         public abstract AbilityStatsData abilityData { get; }
 
+        public abstract string abilityParticlePoolName { get; }
+
+        public abstract string abilityRangedObjectPoolName { get; }
+
         public virtual IEnumerator DisableColliderAfterSeconds(GameObject weapon, float seconds)
         {
             yield return new WaitForSeconds(seconds);
             AbilityColliderConfigurator.DisableCollider(weapon);
         }
+
+
     }
 }
 
