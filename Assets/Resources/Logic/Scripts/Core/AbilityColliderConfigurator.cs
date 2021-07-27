@@ -61,11 +61,15 @@ public static class AbilityColliderConfigurator
 
     public static void RemoveUnusedColliders(GameObject weapon)
     {
-        if (weapon.GetComponent<Collider2D>())
+        if(weapon.GetComponent<BaseCustomCollider>())
         {
-            UnityEngine.Object.Destroy(weapon.GetComponent<FanCollider2D>());
-            //UnityEngine.Object.Destroy(weapon.GetComponent<TriangleCollider2D>());
-            //UnityEngine.Object.Destroy(weapon.GetComponent<Collider2D>());
+            var component = weapon.GetComponent<BaseCustomCollider>();
+            UnityEngine.Object.DestroyImmediate(component);
+            UnityEngine.Object.DestroyImmediate(weapon.GetComponent<PolygonCollider2D>());
+        }
+        else if(weapon.GetComponent<Collider2D>())
+        {
+            UnityEngine.Object.Destroy(weapon.GetComponent<Collider2D>());
         }
     }
 

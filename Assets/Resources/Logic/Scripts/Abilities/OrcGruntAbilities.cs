@@ -21,8 +21,6 @@ namespace QuestTales.Core.Abilities.OrcGrunt
 
         public override string abilityParticlePoolName => throw new NotImplementedException();
 
-        public override string abilityRangedObjectPoolName => throw new NotImplementedException();
-
         public void DealDamage(IDamagable damagable)
         {
             damagable.TakeDamage(abilityData.power);
@@ -37,6 +35,11 @@ namespace QuestTales.Core.Abilities.OrcGrunt
                     DealDamage(target.transform.parent.GetComponent<UnitPhysiology>());
                 }
             }
+        }
+
+        public override void SpawnParticle()
+        {
+            throw new NotImplementedException();
         }
     }
 }

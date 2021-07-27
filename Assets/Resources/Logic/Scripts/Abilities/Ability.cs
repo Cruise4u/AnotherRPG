@@ -32,6 +32,7 @@ namespace QuestTales.Core.Abilities
         Swing,
         Stab,
     }
+
     public abstract class Ability
     {
         public AbilityHitHandler abilityColliderDetector;
@@ -52,15 +53,13 @@ namespace QuestTales.Core.Abilities
 
         public abstract string abilityParticlePoolName { get; }
 
-        public abstract string abilityRangedObjectPoolName { get; }
-
         public virtual IEnumerator DisableColliderAfterSeconds(GameObject weapon, float seconds)
         {
             yield return new WaitForSeconds(seconds);
             AbilityColliderConfigurator.DisableCollider(weapon);
         }
 
-
+        public abstract void SpawnParticle();
     }
 }
 

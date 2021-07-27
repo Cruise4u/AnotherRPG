@@ -39,7 +39,7 @@ public class AbilityController : MonoBehaviour
     {
         if(!cooldownController.IsAbilityOnCooldown())
         {
-            if(currentAbility.rangeType != RangeType.Range)
+            if(currentAbility.rangeType == RangeType.Melee)
             {
                 AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
                 AnimateAbility(currentAbility);
@@ -49,7 +49,6 @@ public class AbilityController : MonoBehaviour
             }
             else
             {
-                AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
                 AnimateAbility(currentAbility);
                 StartCoroutine(WaitForSecondsBeforeProcessingAbility(0.25f));
                 StartCoroutine(CoroutineInputBlockage(0.85f));
