@@ -1,30 +1,93 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using QuestTales.Core.Abilities;
-using System.Collections;
+
 
 namespace QuestTales.Core.Abilities.Paladin
 {
-    public class HolyStrike : Ability
+    public class HolyStrike : Ability,IDamager,IPusher
     {
-        public override ControllerType controllerType => ControllerType.Player;
-        public override IdType abilityName => IdType.HolyStrike;
-        public override RangeType abilityRange => RangeType.Melee;
+        public override IdType idType => IdType.HolyStrike;
+        public override RangeType rangeType => RangeType.Melee;
         public override ColliderType abilityColliderType => ColliderType.Fan;
         public override AnimationType animationType => AnimationType.Circular;
         public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Paladin/HolyStrikeCollider");
-        public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Paladin/HolyStrikeStatsData");
-
-        public override void ProcessAbility()
+        public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Paladin/HolyStrikeData");
+        public override string abilityParticlePoolName => "";
+        public override void ProcessAbility(List<GameObject> targets)
         {
-            Debug.Log("Do Holy Strike Cool Stuff!!");
+            if(targets != null && targets.Count > 0)
+            {
+                foreach (GameObject target in targets)
+                {
+                    DealDamage(target.transform.parent.GetComponent<UnitPhysiology>());
+                    PushEnemy(target.transform.parent.GetComponent<UnitPhysiology>());
+                }
+            }
         }
-
-        public IEnumerator CoroutineHolyStrike(GameObject weapon, float seconds)
+        public void DealDamage(IDamagable damagable)
         {
-            yield return new WaitForSeconds(seconds);
-            AbilityColliderConfigurator.DisableCollider(weapon);
+            if (damagable != null)
+            {
+                damagable.TakeDamage(abilityData.power);
+            }
+        }
+        public void PushEnemy(IPushable pushable)
+        {
+            pushable.Push(pushable.pushDirection);
+        }
+        public override void SpawnParticle()
+        {
+            throw new NotImplementedException();
         }
     }
 
+    public class Smite : Ability,IDamager,IStunner
+    {
+        public override IdType idType => IdType.Smite;
+
+        public override RangeType rangeType => RangeType.Range;
+
+        public override ColliderType abilityColliderType => ColliderType.Circle;
+
+        public override AnimationType animationType => AnimationType.Ranged;
+
+        public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Paladin/SmiteCollider");
+
+        public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Paladin/SmiteData");
+
+        public override string abilityParticlePoolName => "SmiteParticlePool";
+
+        public override void ProcessAbility(List<GameObject> targets)
+        {
+            if (targets != null && targets.Count > 0)
+            {
+                foreach (GameObject target in targets)
+                {
+                    DealDamage(target.transform.parent.GetComponent<UnitPhysiology>());
+                    Stun(target.transform.parent.GetComponent<UnitPhysiology>());
+                }
+            }
+        }
+
+        public void DealDamage(IDamagable damagable)
+        {
+            damagable.TakeDamage(abilityData.power);
+        }
+
+        public void Stun(IStunnable stunnable)
+        {
+            if(stunnable != null)
+            {
+                stunnable.GetStunned();
+            }
+        }
+
+        public override void SpawnParticle()
+        {
+
+        }
+    }
 }

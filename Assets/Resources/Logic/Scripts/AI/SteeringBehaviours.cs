@@ -35,7 +35,6 @@ namespace QuestTales.Core.AI.SteeringBehaviours
             var distance = Vector3.Distance(agent.transform.position, target.transform.position);
             if (distance > threshold)
             {
-                agent.isStopped = false;
                 Vector3 newPosition = Mathematics.GeneratePointOnCircle(target.transform.position, 3.0f);
                 Vector3 desiredVelocity = (target.transform.position - agent.transform.position).normalized * agent.speed;
                 Vector3 steeringForce = newPosition - (agent.transform.position + (desiredVelocity - agent.velocity));
@@ -46,6 +45,11 @@ namespace QuestTales.Core.AI.SteeringBehaviours
         public static void StopSteering(NavMeshAgent agent)
         {
             agent.isStopped = true;
+        }
+
+        public static void ContinueSteering(NavMeshAgent agent)
+        {
+            agent.isStopped = false;
         }
 
         //public void FleeFromTarget(Vector3 targetPosition)

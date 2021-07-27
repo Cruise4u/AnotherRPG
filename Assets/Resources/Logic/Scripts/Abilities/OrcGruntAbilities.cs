@@ -1,16 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using QuestTales.Core.Abilities;
 using UnityEngine;
 
 namespace QuestTales.Core.Abilities.OrcGrunt
 {
-    public class Bash : Ability
-    {
-        public override ControllerType controllerType => ControllerType.AI;
+    public class Bash : Ability, IDamager
+    { 
+        public override IdType idType => IdType.Bash;
 
-        public override IdType abilityName => IdType.Bash;
-
-        public override RangeType abilityRange => RangeType.Melee;
+        public override RangeType rangeType => RangeType.Melee;
 
         public override ColliderType abilityColliderType => ColliderType.Fan;
 
@@ -20,7 +19,25 @@ namespace QuestTales.Core.Abilities.OrcGrunt
 
         public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Orc/BashStatsData");
 
-        public override void ProcessAbility()
+        public override string abilityParticlePoolName => throw new NotImplementedException();
+
+        public void DealDamage(IDamagable damagable)
+        {
+            damagable.TakeDamage(abilityData.power);
+        }
+
+        public override void ProcessAbility(List<GameObject> targets)
+        {
+            if(targets != null & targets.Count > 0)
+            {
+                foreach (GameObject target in targets)
+                {
+                    DealDamage(target.transform.parent.GetComponent<UnitPhysiology>());
+                }
+            }
+        }
+
+        public override void SpawnParticle()
         {
             throw new NotImplementedException();
         }

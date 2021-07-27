@@ -9,7 +9,7 @@ public static class AbilityColliderConfigurator
     public static void SetCollider(GameObject weapon,Ability ability)
     {
         RemoveUnusedColliders(weapon);
-        if (ability.abilityRange == RangeType.Melee)
+        if (ability.rangeType == RangeType.Melee)
         {
             switch (ability.abilityColliderType)
             {
@@ -61,12 +61,15 @@ public static class AbilityColliderConfigurator
 
     public static void RemoveUnusedColliders(GameObject weapon)
     {
-        if (weapon.GetComponent<Collider2D>())
+        if(weapon.GetComponent<BaseCustomCollider>())
         {
-            Debug.Log("Is this working?");
-            UnityEngine.Object.Destroy(weapon.GetComponent<FanCollider2D>());
-            //UnityEngine.Object.Destroy(weapon.GetComponent<TriangleCollider2D>());
-            //UnityEngine.Object.Destroy(weapon.GetComponent<Collider2D>());
+            var component = weapon.GetComponent<BaseCustomCollider>();
+            UnityEngine.Object.DestroyImmediate(component);
+            UnityEngine.Object.DestroyImmediate(weapon.GetComponent<PolygonCollider2D>());
+        }
+        else if(weapon.GetComponent<Collider2D>())
+        {
+            UnityEngine.Object.Destroy(weapon.GetComponent<Collider2D>());
         }
     }
 
@@ -87,10 +90,12 @@ public static class AbilityColliderConfigurator
         if (weapon.GetComponent<Collider2D>())
         {
             weapon.GetComponent<Collider2D>().enabled = true;
+            weapon.GetComponent<Collider2D>().isTrigger = true;
         }
         else if (weapon.GetComponent<BaseCustomCollider>())
         {
             weapon.GetComponent<BaseCustomCollider>().enabled = true;
+            weapon.GetComponent<PolygonCollider2D>().isTrigger = true;
         }
     }
 

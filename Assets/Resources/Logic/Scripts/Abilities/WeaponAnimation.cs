@@ -20,15 +20,20 @@ public class WeaponAnimation
         abilityController.BlockInputDelegate.Invoke(true);
         var weaponBasePosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(0).transform.position;
         var weaponTipPosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.abilityBook.currentAbility.colliderData.radius;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.currentAbility.colliderData.radius;
         var adjustedWeaponPosition = new Vector3(abilityController.weaponAnimator.weapon.transform.position.x + weaponOffset.x, abilityController.weaponAnimator.weapon.transform.position.y + weaponOffset.y, 0.0f);
-        var initialAngle = abilityController.abilityBook.currentAbility.colliderData.angle - 10.0f;
-        var finalAngle = abilityController.abilityBook.currentAbility.colliderData.angle + (10.0f * 2.0f);
+        var initialAngle = abilityController.currentAbility.colliderData.angle - 25.0f;
+        var finalAngle = abilityController.currentAbility.colliderData.angle + (25.0f * 2.0f);
+        if (abilityController.abilityAim.IsAnglePositive(abilityController.abilityAim.GetUnitCircleAimAngle()) != true)
+        {
+            initialAngle *= -1;
+            finalAngle *= -1;
+        }
         Quaternion initialRotation = Quaternion.Euler(0, 0, -initialAngle);
         Quaternion finalRotation = Quaternion.Euler(0, 0, -finalAngle);
         Tween forwardLungeTween = abilityController.transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.15f).SetEase(Ease.Linear);
-        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(initialRotation.eulerAngles, 0.1f));
-        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(finalRotation.eulerAngles, 0.2f));
+        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(initialRotation.eulerAngles, 0.15f));
+        sequence.Append(abilityController.weaponAnimator.weapon.transform.DOLocalRotate(finalRotation.eulerAngles, 0.15f));
         sequence.Play();
         yield return forwardLungeTween.WaitForCompletion();
         abilityController.BlockInputDelegate.Invoke(false);
@@ -39,7 +44,7 @@ public class WeaponAnimation
         abilityController.BlockInputDelegate.Invoke(true);
         var weaponBasePosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(0).transform.position;
         var weaponTipPosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.abilityBook.currentAbility.colliderData.radius;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.currentAbility.colliderData.radius;
         var adjustedWeaponPosition = new Vector3(abilityController.weaponAnimator.weapon.transform.position.x + weaponOffset.x, abilityController.weaponAnimator.weapon.transform.position.y + weaponOffset.y, 0.0f);
         var angle = Mathf.Atan2(weaponDirection.y, weaponDirection.x);
         Tween forwardLungeTween = abilityController.weaponAnimator.weapon.transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.17f).SetEase(Ease.Linear);
@@ -55,7 +60,7 @@ public class WeaponAnimation
         abilityController.BlockInputDelegate.Invoke(true);
         var weaponBasePosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(0).transform.position;
         var weaponTipPosition = abilityController.weaponAnimator.weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.abilityBook.currentAbility.colliderData.radius;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * abilityController.currentAbility.colliderData.radius;
         var adjustedWeaponPosition = new Vector3(abilityController.weaponAnimator.weapon.transform.position.x + weaponOffset.x, abilityController.weaponAnimator.weapon.transform.position.y + weaponOffset.y, 0.0f);
         Tween forwardLungeTween = abilityController.transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.15f).SetEase(Ease.Linear);
         Vector3 fullRotation;
@@ -74,7 +79,5 @@ public class WeaponAnimation
         abilityController.BlockInputDelegate.Invoke(false);
     }
     
-
-
 }
 

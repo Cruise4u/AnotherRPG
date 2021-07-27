@@ -5,13 +5,13 @@ using UnityEngine.AI;
 
 public class PlayerController : UnitController
 {
-    private CameraManager cameraManager;
+    private CameraHandler cameraManager;
     private NavigationAgent myAgent;
 
     public override void Init()
     {
         base.Init();
-        cameraManager = FindObjectOfType<CameraManager>();
+        cameraManager = FindObjectOfType<CameraHandler>();
         myAgent = GetComponent<NavigationAgent>();
     }
 
@@ -50,22 +50,16 @@ public class PlayerController : UnitController
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            abilityController.SetCurrentAbility(IdType.HolyStrike);
+            abilityController.cooldownController.lastSelectedId = 0;
+            abilityController.SetCurrentAbility(abilityController.cooldownController.lastSelectedId);
         }
     }
 
     public void AbilityInput()
     {
-        if (abilityController.abilityBook.currentAbility != null)
+        if(Input.GetMouseButtonDown(0) && abilityController.currentAbility != null)
         {
-            unitCombat.ReduceCooldown(0.85f);
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (unitCombat.attackCooldown < 0.1f)
-                {
-                    abilityController.CastAbility();
-                }
-            }
+            abilityController.CastAbility();
         }
     }
 

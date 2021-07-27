@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1ef52b6bb01364bb91f7972453e2c4, type: 3}
   m_Name: HolyStrikeStatsData
   m_EditorClassIdentifier: 
-  power: 5
-  cost: 15
-  cooldown: 4
+  power: 25
+  cost: 0
+  cooldown: 3

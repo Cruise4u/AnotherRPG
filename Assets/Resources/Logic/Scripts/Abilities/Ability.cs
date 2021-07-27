@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace QuestTales.Core.Abilities
@@ -26,37 +27,67 @@ namespace QuestTales.Core.Abilities
     }
     public enum AnimationType
     {
-        Swing,
-        Stab,
         Circular,
         Ranged,
-    }
-
-    public enum ControllerType
-    {
-        Player,
-        AI,
+        Swing,
+        Stab,
     }
 
     public abstract class Ability
     {
-        public AbilityColliderDetector abilityColliderDetector;
+        public AbilityHitHandler abilityColliderDetector;
 
-        public abstract ControllerType controllerType { get; }
+        public abstract IdType idType { get; }
 
-        public abstract IdType abilityName { get; }
-
-        public abstract RangeType abilityRange { get; }
+        public abstract RangeType rangeType { get; }
 
         public abstract ColliderType abilityColliderType { get; }
 
         public abstract AnimationType animationType { get; }
 
-        public abstract void ProcessAbility();
+        public abstract void ProcessAbility(List<GameObject> targets);
 
         public abstract ColliderData colliderData { get; }
 
         public abstract AbilityStatsData abilityData { get; }
+
+        public abstract string abilityParticlePoolName { get; }
+
+        public virtual IEnumerator DisableColliderAfterSeconds(GameObject weapon, float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            AbilityColliderConfigurator.DisableCollider(weapon);
+        }
+
+        public abstract void SpawnParticle();
     }
 }
+
+
+
+//public interface IAbilityFactory
+//{
+//    IAbilityProduct CreateAbilityProduct();
+//}
+
+//public interface IAbilityProduct
+//{
+//    void ProcessAbility();
+//}
+
+//public class AbFactory : IAbilityFactory
+//{
+//    public IAbilityProduct CreateAbilityProduct()
+//    {
+//        return new Fireball();
+//    }
+//}
+
+//public class Fireball : IAbilityProduct
+//{
+//    public void ProcessAbility()
+//    {
+//        throw new NotImplementedException();
+//    }
+//}
 
