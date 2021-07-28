@@ -24,22 +24,20 @@ public class AbilityController : MonoBehaviour
         cooldownController = GetComponent<CooldownController>();
     }
     
-    public void SetCurrentAbilityIndex(int index)
-    {
-        abilityArrayIndex = index;
-    }
-
-    public void CallAbilityLogic(IdType idType)
+    public void CallAbilityLogic(IdType idType,Vector3 spawnPosition)
     {
         if(!cooldownController.IsAbilityOnCooldown() && abilityArrayIndex != -1)
         {
             var ability = AbilityFactory.GetAbilityByName(abilityBookData.abilityIdList[abilityArrayIndex]);
             if (ability.rangeType == RangeType.Melee)
             {
-                AbilityColliderConfigurator.EnableCollider(abilityAim.weapon);
+                Debug.Log("Starting the ability logic call..");
+                StartCoroutine(BlockInputRoutine(1.0f));
+                var instance = ability.InstantiateAbility(spawnPosition);
+                SetCasterAsParent(instance);
                 CallAbilityAnimation(ability);
-                StartCoroutine(ProcessAbilityRoutine(ability,0.25f));
-                StartCoroutine(BlockInputRoutine(0.85f));
+                ability.CalculateAbilityColliders(instance, "Enemy");
+                //StartCoroutine(ProcessAbilityRoutine(ability,0.25f));
                 cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
             }
             else
@@ -72,7 +70,7 @@ public class AbilityController : MonoBehaviour
 
     public void SetCasterAsParent(GameObject abilityPrefab)
     {
- 
+        abilityPrefab.transform.SetParent(transform);
     }
 
     public IEnumerator ProcessAbilityRoutine(Ability ability,float time)

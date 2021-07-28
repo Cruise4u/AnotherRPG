@@ -21,12 +21,17 @@ namespace QuestTales.Core.Abilities.OrcGrunt
 
         public override string abilityParticlePoolName => throw new NotImplementedException();
 
+        public override void CalculateAbilityColliders(GameObject instance, string tag)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DealDamage(IDamagable damagable)
         {
             damagable.TakeDamage(abilityData.power);
         }
 
-        public override void InstantiateAbility(Vector3 position)
+        public override GameObject InstantiateAbility(Vector3 position)
         {
             throw new NotImplementedException();
         }

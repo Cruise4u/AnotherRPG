@@ -47,7 +47,7 @@ namespace QuestTales.Core.Abilities
 
         public abstract void ProcessAbility(List<GameObject> targets);
 
-        public abstract void InstantiateAbility(Vector3 position);
+        public abstract GameObject InstantiateAbility(Vector3 position);
 
         public abstract void SpawnParticles(Vector3 position);
 
@@ -62,6 +62,8 @@ namespace QuestTales.Core.Abilities
             yield return new WaitForSeconds(seconds);
             AbilityColliderConfigurator.DisableCollider(weapon);
         }
+
+        public abstract void CalculateAbilityColliders(GameObject instance,string tag);
     }
 }
 

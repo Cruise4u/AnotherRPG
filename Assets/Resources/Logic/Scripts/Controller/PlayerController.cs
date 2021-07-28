@@ -50,8 +50,8 @@ public class PlayerController : UnitController
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            abilityController.abilityArrayIndex = 0;
             abilityController.cooldownController.lastSelectedId = 0;
-            abilityController.SetCurrentAbilityIndex(abilityController.cooldownController.lastSelectedId);
         }
     }
 
@@ -59,7 +59,7 @@ public class PlayerController : UnitController
     {
         if(Input.GetMouseButtonDown(0) && abilityController.abilityArrayIndex != -1)
         {
-            abilityController.CallAbilityLogic(abilityController.abilityBookData.abilityIdList[abilityController.abilityArrayIndex]);
+            abilityController.CallAbilityLogic(abilityController.abilityBookData.abilityIdList[abilityController.abilityArrayIndex],abilityController.abilityAim.weapon.transform.position);
         }
     }
 

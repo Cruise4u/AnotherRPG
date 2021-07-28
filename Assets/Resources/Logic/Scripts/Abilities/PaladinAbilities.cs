@@ -15,7 +15,7 @@ namespace QuestTales.Core.Abilities.Paladin
         public override AnimationType animationType => AnimationType.ThreeSixty;
         public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Paladin/HolyStrikeCollider");
         public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Paladin/HolyStrikeData");
-        public override string abilityParticlePoolName => "";
+        public override string abilityParticlePoolName => "HolyStrikePool";
         public override void ProcessAbility(List<GameObject> targets)
         {
             if(targets != null && targets.Count > 0)
@@ -27,6 +27,7 @@ namespace QuestTales.Core.Abilities.Paladin
                 }
             }
         }
+
         public void DealDamage(IDamagable damagable)
         {
             if (damagable != null)
@@ -39,16 +40,39 @@ namespace QuestTales.Core.Abilities.Paladin
             pushable.Push(pushable.pushDirection);
         }
 
-        public override void InstantiateAbility(Vector3 position)
+        public override GameObject InstantiateAbility(Vector3 position)
         {
-            ObjectPool.Instance.SpawnPoolObject(abilityParticlePoolName, position);
+            return ObjectPool.Instance.SpawnPoolObject(abilityParticlePoolName, position);
         }
 
         public override void SpawnParticles(Vector3 position)
         {
             throw new NotImplementedException();
         }
+
+        public override void CalculateAbilityColliders(GameObject abilityInstance,string tag)
+        {
+            var colliderPoints = abilityInstance.GetComponent<PolygonCollider2D>().points;
+            foreach (Vector2 point in colliderPoints)
+            {
+                if(Physics2D.OverlapPoint(point).CompareTag(tag))
+                {
+                    Debug.Log("It's overlapping a point in the ability collider! That's awesome!");
+                    DealDamage(Physics2D.OverlapPoint(point).gameObject.GetComponent<UnitPhysiology>());
+                }
+            }
+        }
     }
+
+
+
+
+
+
+
+
+
+
 
     public class Smite : Ability,IDamager,IStunner
     {
@@ -91,12 +115,17 @@ namespace QuestTales.Core.Abilities.Paladin
             }
         }
 
-        public override void InstantiateAbility(Vector3 position)
+        public override GameObject InstantiateAbility(Vector3 position)
         {
             throw new NotImplementedException();
         }
 
         public override void SpawnParticles(Vector3 position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void CalculateAbilityColliders(GameObject instance, string tag)
         {
             throw new NotImplementedException();
         }

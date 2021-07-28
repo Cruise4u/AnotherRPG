@@ -4,6 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PoolEnum
+{
+    General,
+    Ability,
+    UI,
+    VFX,
+}
+
 public class ObjectPool : MonoBehaviour
 {
     [Serializable]

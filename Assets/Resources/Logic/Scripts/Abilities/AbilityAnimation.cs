@@ -66,9 +66,8 @@ public class AbilityAnimation
     public IEnumerator ThreeSixtyAnimationRoutine(Ability ability, GameObject weapon, bool isAnglePositive, Action<bool> inputBlockDelegate)
     {
         inputBlockDelegate.Invoke(true);
-        var weaponBasePosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
-        var weaponTipPosition = weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * ability.colliderData.radius;
+        var weaponTipPosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
+        var weaponDirection = (weaponTipPosition - transform.position).normalized * ability.colliderData.radius;
         var adjustedWeaponPosition = new Vector3(weapon.transform.position.x + weaponOffset.x, weapon.transform.position.y + weaponOffset.y, 0.0f);
         Tween forwardLungeTween = transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.15f).SetEase(Ease.Linear);
         Vector3 fullRotation;
