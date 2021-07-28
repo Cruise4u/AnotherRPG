@@ -28,7 +28,7 @@ public class CooldownController : MonoBehaviour
     public void SetCooldownToMaximum(List<IdType> abilityIdList)
     {
         var idType = AbilityFactory.GetAbilityByName(abilityIdList[lastSelectedId]).idType;
-        cooldownList[lastSelectedId] = AbilityFactory.GetAbilityByName(idType).abilityData.cooldown;
+        cooldownList[lastSelectedId] = AbilityFactory.GetAbilityByName(idType).abilityStats.cooldown;
         abilityReadyList[lastSelectedId] = false;
     }
 

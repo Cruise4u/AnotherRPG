@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HolyStrikeAnimationData
   m_EditorClassIdentifier: 
   weaponOffset: {x: 0, y: 0}
-  weaponLocalPosition: {x: 0, y: 0}
+  weaponLocalPosition: {x: 0, y: 0.5}

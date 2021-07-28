@@ -35,8 +35,7 @@ namespace QuestTales.Core.Abilities
 
     public abstract class Ability
     {
-        public AbilityHitHandler abilityColliderDetector;
-
+        public abstract string poolName { get; }
         public abstract IdType idType { get; }
 
         public abstract RangeType rangeType { get; }
@@ -45,25 +44,26 @@ namespace QuestTales.Core.Abilities
 
         public abstract AnimationType animationType { get; }
 
-        public abstract void ProcessAbility(List<GameObject> targets);
+        public abstract void ProcessAbility(GameObject target);
 
-        public abstract GameObject InstantiateAbility(Vector3 position);
+        public virtual GameObject InstantiateAbility(Vector3 position, Quaternion rotation)
+        {
+            var instance = ObjectPool.Instance.SpawnPoolObject(poolName, position);
+            instance.transform.rotation = rotation;
+            return instance;
+        }
+
+        public virtual IEnumerator ReturnAbilityRoutine(GameObject instance,float time)
+        {
+            yield return new WaitForSeconds(time);
+            ObjectPool.Instance.ReturnToPool(poolName,instance);
+        }
 
         public abstract void SpawnParticles(Vector3 position);
 
         public abstract ColliderData colliderData { get; }
 
-        public abstract AbilityStatsData abilityData { get; }
-
-        public abstract string abilityParticlePoolName { get; }
-
-        public virtual IEnumerator DisableColliderAfterSeconds(GameObject weapon, float seconds)
-        {
-            yield return new WaitForSeconds(seconds);
-            AbilityColliderConfigurator.DisableCollider(weapon);
-        }
-
-        public abstract void CalculateAbilityColliders(GameObject instance,string tag);
+        public abstract AbilityStatsData abilityStats { get; }
     }
 }
 

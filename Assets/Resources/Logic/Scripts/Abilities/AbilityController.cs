@@ -8,43 +8,36 @@ public class AbilityController : MonoBehaviour
 {
     public AbilityAim abilityAim;
     public AbilityAnimation abilityAnimation;
-    public AbilityAnimationData weaponAnimationData;
+    public AbilityAnimationData abilityAnimationData;
     public AbilityBookData abilityBookData;
-    public AbilityHitHandler abilityHitCollider;
+    public AbilityHitDetector abilityHitCollider;
     public CooldownController cooldownController;
+    public int abilityArrayIndex;
     public Vector2 offset;
     public Action<bool> BlockInputDelegate;
-    public int abilityArrayIndex;
 
     public void Init()
     {
         AbilityFactory.InitAbilityFactory();
         abilityAim = new AbilityAim(transform, offset, transform.GetChild(0).gameObject);
-        abilityHitCollider = gameObject.transform.GetChild(0).GetComponent<AbilityHitHandler>();
+        abilityAnimation = new AbilityAnimation(abilityAnimationData, transform);
+        abilityHitCollider = gameObject.transform.GetChild(0).GetComponent<AbilityHitDetector>();
         cooldownController = GetComponent<CooldownController>();
     }
     
     public void CallAbilityLogic(IdType idType,Vector3 spawnPosition)
     {
-        if(!cooldownController.IsAbilityOnCooldown() && abilityArrayIndex != -1)
+        if(!cooldownController.IsAbilityOnCooldown())
         {
             var ability = AbilityFactory.GetAbilityByName(abilityBookData.abilityIdList[abilityArrayIndex]);
             if (ability.rangeType == RangeType.Melee)
             {
-                Debug.Log("Starting the ability logic call..");
                 StartCoroutine(BlockInputRoutine(1.0f));
-                var instance = ability.InstantiateAbility(spawnPosition);
+                CallAbilityAnimation(ability);
+                var instance = ability.InstantiateAbility(spawnPosition,abilityAim.weapon.transform.rotation);
                 SetCasterAsParent(instance);
-                CallAbilityAnimation(ability);
-                ability.CalculateAbilityColliders(instance, "Enemy");
-                //StartCoroutine(ProcessAbilityRoutine(ability,0.25f));
-                cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
-            }
-            else
-            {
-                CallAbilityAnimation(ability);
-                StartCoroutine(ProcessAbilityRoutine(ability,0.25f));
-                StartCoroutine(BlockInputRoutine(0.85f));
+                instance.GetComponent<AbilityHitDetector>().ability = ability;
+                StartCoroutine(ability.ReturnAbilityRoutine(instance, 1.0f));
                 cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
             }
         }
@@ -54,7 +47,6 @@ public class AbilityController : MonoBehaviour
     {
         if (ability != null)
         {
-            var data = ability.colliderData;
             var isAnglePositive = abilityAim.IsAnglePositive(abilityAim.GetAimAngle());
             switch (ability.animationType)
             {
@@ -73,17 +65,10 @@ public class AbilityController : MonoBehaviour
         abilityPrefab.transform.SetParent(transform);
     }
 
-    public IEnumerator ProcessAbilityRoutine(Ability ability,float time)
-    {
-        yield return new WaitForSeconds(time);
-        ability.ProcessAbility(abilityHitCollider.hittedTargetsList);
-    }
-
     public IEnumerator BlockInputRoutine(float seconds)
     {
         BlockInputDelegate.Invoke(true);
         yield return new WaitForSeconds(seconds);
         BlockInputDelegate.Invoke(false);
     }
-
 }

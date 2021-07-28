@@ -17,18 +17,13 @@ public class AbilityAnimation
         weaponLocalPosition = animationData.weaponLocalPosition;
     }
 
-    public void SetAnimationSettings(AbilityAnimationData abilityAnimationData)
-    {
-
-    }
-
     public IEnumerator SwingAnimationRoutine(Ability ability,GameObject weapon,bool isAnglePositive,Action<bool> inputBlockDelegate)
     {
         Sequence sequence = DOTween.Sequence();
         inputBlockDelegate.Invoke(true);
         var weaponBasePosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
         var weaponTipPosition = weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * ability.colliderData.radius;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * ability.abilityStats.range;
         var adjustedWeaponPosition = new Vector3(weapon.transform.position.x + weaponOffset.x, weapon.transform.position.y + weaponOffset.y, 0.0f);
         var initialAngle = ability.colliderData.angle - 25.0f;
         var finalAngle = ability.colliderData.angle + (25.0f * 2.0f);
@@ -52,7 +47,7 @@ public class AbilityAnimation
         inputBlockDelegate.Invoke(true);
         var weaponBasePosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
         var weaponTipPosition = weapon.transform.GetChild(0).GetChild(1).transform.position;
-        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * ability.colliderData.radius;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * ability.abilityStats.range;
         var adjustedWeaponPosition = new Vector3(weapon.transform.position.x + weaponOffset.x, weapon.transform.position.y + weaponOffset.y, 0.0f);
         var angle = Mathf.Atan2(weaponDirection.y, weaponDirection.x);
         Tween forwardLungeTween = weapon.transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.17f).SetEase(Ease.Linear);
@@ -66,8 +61,9 @@ public class AbilityAnimation
     public IEnumerator ThreeSixtyAnimationRoutine(Ability ability, GameObject weapon, bool isAnglePositive, Action<bool> inputBlockDelegate)
     {
         inputBlockDelegate.Invoke(true);
-        var weaponTipPosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
-        var weaponDirection = (weaponTipPosition - transform.position).normalized * ability.colliderData.radius;
+        var weaponBasePosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
+        var weaponTipPosition = weapon.transform.GetChild(0).GetChild(1).transform.position;
+        var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * ability.abilityStats.range;
         var adjustedWeaponPosition = new Vector3(weapon.transform.position.x + weaponOffset.x, weapon.transform.position.y + weaponOffset.y, 0.0f);
         Tween forwardLungeTween = transform.DOMove(adjustedWeaponPosition + weaponDirection, 0.15f).SetEase(Ease.Linear);
         Vector3 fullRotation;
@@ -82,7 +78,7 @@ public class AbilityAnimation
             weapon.transform.DORotate(fullRotation, 0.5f, RotateMode.FastBeyond360).SetEase(Ease.Linear);
         }
         yield return forwardLungeTween.WaitForCompletion();
-        weapon.transform.GetChild(0).transform.localPosition = weaponLocalPosition;
+        weapon.transform.localPosition = weaponLocalPosition;
         inputBlockDelegate.Invoke(false);
     }
     

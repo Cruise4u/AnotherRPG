@@ -17,33 +17,25 @@ namespace QuestTales.Core.Abilities.OrcGrunt
 
         public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Orc/BashCollider");
 
-        public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Orc/BashStatsData");
+        public override AbilityStatsData abilityStats => Resources.Load<AbilityStatsData>("Data/Ability/Orc/BashStatsData");
 
-        public override string abilityParticlePoolName => throw new NotImplementedException();
-
-        public override void CalculateAbilityColliders(GameObject instance, string tag)
-        {
-            throw new NotImplementedException();
-        }
+        public override string poolName => throw new NotImplementedException();
 
         public void DealDamage(IDamagable damagable)
         {
-            damagable.TakeDamage(abilityData.power);
+            damagable.TakeDamage(abilityStats.power);
         }
 
-        public override GameObject InstantiateAbility(Vector3 position)
+        public override GameObject InstantiateAbility(Vector3 position, Quaternion rotation)
         {
             throw new NotImplementedException();
         }
 
-        public override void ProcessAbility(List<GameObject> targets)
+        public override void ProcessAbility(GameObject target)
         {
-            if(targets != null & targets.Count > 0)
+            if(target != null)
             {
-                foreach (GameObject target in targets)
-                {
-                    DealDamage(target.transform.parent.GetComponent<UnitPhysiology>());
-                }
+                DealDamage(target.transform.parent.GetComponent<UnitPhysiology>());
             }
         }
 

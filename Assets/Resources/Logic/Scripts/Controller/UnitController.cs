@@ -12,14 +12,14 @@ public abstract class UnitController : MonoBehaviour
 
     public abstract void AimInput();
 
-    public virtual void ToggleInputBlockage(bool condition)
-    {
-        isInputBlocked = condition;
-    }
-
     public virtual void FetchUnitComponents()
     {        
         abilityController = GetComponent<AbilityController>();
+    }
+
+    public virtual void BlockInput(bool condition)
+    {
+        isInputBlocked = condition;
     }
 
     public virtual void Init()
@@ -27,6 +27,6 @@ public abstract class UnitController : MonoBehaviour
         combatController = GetComponent<UnitPhysiology>();
         abilityController = GetComponent<AbilityController>();
         abilityController.Init();
-        abilityController.BlockInputDelegate += ToggleInputBlockage;
+        abilityController.BlockInputDelegate += BlockInput;
     }
 }

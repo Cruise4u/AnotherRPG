@@ -53,6 +53,11 @@ public class PlayerController : UnitController
             abilityController.abilityArrayIndex = 0;
             abilityController.cooldownController.lastSelectedId = 0;
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            abilityController.abilityArrayIndex = 1;
+            abilityController.cooldownController.lastSelectedId = 1;
+        }
     }
 
     public void AbilityInput()
