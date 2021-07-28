@@ -26,6 +26,11 @@ namespace QuestTales.Core.Abilities.OrcGrunt
             damagable.TakeDamage(abilityData.power);
         }
 
+        public override void InstantiateAbility(Vector3 position)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void ProcessAbility(List<GameObject> targets)
         {
             if(targets != null & targets.Count > 0)
@@ -37,7 +42,7 @@ namespace QuestTales.Core.Abilities.OrcGrunt
             }
         }
 
-        public override void SpawnParticle()
+        public override void SpawnParticles(Vector3 position)
         {
             throw new NotImplementedException();
         }

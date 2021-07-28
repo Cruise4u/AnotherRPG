@@ -4,16 +4,17 @@ using DG.Tweening;
 
 public class AbilityAim
 {
-    private Transform transform;
-    private GameObject weapon;
-    private Vector3 aimDirection;
+    public GameObject weapon;
     public Vector2 offset;
+    private Transform transform;
+    private Vector3 aimDirection;
+
 
     public AbilityAim(Transform transform,Vector2 offset,GameObject weapon)
     {
         this.transform = transform;
-        this.weapon = weapon;
         this.offset = offset;
+        this.weapon = weapon;
     }
 
     public void SetAimDirection(Vector3 direction)
@@ -21,7 +22,7 @@ public class AbilityAim
         aimDirection = direction;
     }
 
-    public float GetUnitCircleAimAngle()
+    public float GetAimAngle()
     {
         Vector3 normalizedDirection = new Vector3(aimDirection.x - transform.position.x, aimDirection.y - transform.position.y, 0.0f).normalized;
         float angle = Mathematics.GetAngleIn360(normalizedDirection);
@@ -45,11 +46,11 @@ public class AbilityAim
     public bool IsAnglePositive(float angle)
     {
         bool condition = false;
-        if(GetUnitCircleAimAngle() > 0.0f && GetUnitCircleAimAngle() < 180.0f)
+        if(GetAimAngle() > 0.0f && GetAimAngle() < 180.0f)
         {
             condition = true;
         }
-        else if (GetUnitCircleAimAngle() > 180.0f && GetUnitCircleAimAngle() < 360.0f)
+        else if (GetAimAngle() > 180.0f && GetAimAngle() < 360.0f)
         {
             condition = false;
         }

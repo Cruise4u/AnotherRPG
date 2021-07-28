@@ -15,20 +15,19 @@ public static class AbilityFactory
             return;
         Debug.Log("Initializing Ability Factory!");
         abilityDictionary = new Dictionary<IdType, Type>();
-        
+
         var abilityTypes = Assembly.GetAssembly(typeof(Ability)).GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(Ability)) && type.IsClass);
 
 
-        foreach(var type in abilityTypes)
+        foreach (var type in abilityTypes)
         {
             var reference = Activator.CreateInstance(type) as Ability;
             abilityDictionary.Add(reference.idType, type);
         }
     }
-
     public static Ability GetAbilityByName(IdType abilityName)
     {
-        if(abilityDictionary.ContainsKey(abilityName))
+        if (abilityDictionary.ContainsKey(abilityName))
         {
             Type type = abilityDictionary[abilityName];
             var ability = Activator.CreateInstance(type) as Ability;
@@ -40,3 +39,4 @@ public static class AbilityFactory
         }
     }
 }
+

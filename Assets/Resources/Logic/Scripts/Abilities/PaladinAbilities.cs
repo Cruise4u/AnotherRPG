@@ -12,7 +12,7 @@ namespace QuestTales.Core.Abilities.Paladin
         public override IdType idType => IdType.HolyStrike;
         public override RangeType rangeType => RangeType.Melee;
         public override ColliderType abilityColliderType => ColliderType.Fan;
-        public override AnimationType animationType => AnimationType.Circular;
+        public override AnimationType animationType => AnimationType.ThreeSixty;
         public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Paladin/HolyStrikeCollider");
         public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Paladin/HolyStrikeData");
         public override string abilityParticlePoolName => "";
@@ -38,7 +38,13 @@ namespace QuestTales.Core.Abilities.Paladin
         {
             pushable.Push(pushable.pushDirection);
         }
-        public override void SpawnParticle()
+
+        public override void InstantiateAbility(Vector3 position)
+        {
+            ObjectPool.Instance.SpawnPoolObject(abilityParticlePoolName, position);
+        }
+
+        public override void SpawnParticles(Vector3 position)
         {
             throw new NotImplementedException();
         }
@@ -85,9 +91,14 @@ namespace QuestTales.Core.Abilities.Paladin
             }
         }
 
-        public override void SpawnParticle()
+        public override void InstantiateAbility(Vector3 position)
         {
+            throw new NotImplementedException();
+        }
 
+        public override void SpawnParticles(Vector3 position)
+        {
+            throw new NotImplementedException();
         }
     }
 }

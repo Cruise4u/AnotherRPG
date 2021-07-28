@@ -22,7 +22,19 @@ public static class AbilityColliderConfigurator
             }
         }
     }
-
+    public static void RemoveUnusedColliders(GameObject weapon)
+    {
+        if (weapon.GetComponent<BaseCustomCollider>())
+        {
+            var component = weapon.GetComponent<BaseCustomCollider>();
+            UnityEngine.Object.DestroyImmediate(component);
+            UnityEngine.Object.DestroyImmediate(weapon.GetComponent<PolygonCollider2D>());
+        }
+        else if (weapon.GetComponent<Collider2D>())
+        {
+            UnityEngine.Object.Destroy(weapon.GetComponent<Collider2D>());
+        }
+    }
     public static void ConfigureNormalCollider(Collider2D collider, ColliderData colliderData)
     {
         if (collider.GetType() == typeof(CircleCollider2D))
@@ -38,7 +50,6 @@ public static class AbilityColliderConfigurator
             boxCollider.offset = colliderData.offset;
         }
     }
-
     public static void ConfigureCustomCollider(BaseCustomCollider collider, ColliderData colliderData)
     {
         if (collider.GetType() == typeof(FanCollider2D))
@@ -58,33 +69,6 @@ public static class AbilityColliderConfigurator
             triangleCollider.ReCreate(triangleCollider.radius, triangleCollider.length, triangleCollider.IsOpenAngleUsed, triangleCollider.openAngle);
         }
     }
-
-    public static void RemoveUnusedColliders(GameObject weapon)
-    {
-        if(weapon.GetComponent<BaseCustomCollider>())
-        {
-            var component = weapon.GetComponent<BaseCustomCollider>();
-            UnityEngine.Object.DestroyImmediate(component);
-            UnityEngine.Object.DestroyImmediate(weapon.GetComponent<PolygonCollider2D>());
-        }
-        else if(weapon.GetComponent<Collider2D>())
-        {
-            UnityEngine.Object.Destroy(weapon.GetComponent<Collider2D>());
-        }
-    }
-
-    public static void DisableCollider(GameObject weapon)
-    {
-        if (weapon.GetComponent<Collider2D>())
-        {
-            weapon.GetComponent<Collider2D>().enabled = false;
-        }
-        else if (weapon.GetComponent<BaseCustomCollider>())
-        {
-            weapon.GetComponent<BaseCustomCollider>().enabled = false;
-        }
-    }
-
     public static void EnableCollider(GameObject weapon)
     {
         if (weapon.GetComponent<Collider2D>())
@@ -98,11 +82,20 @@ public static class AbilityColliderConfigurator
             weapon.GetComponent<PolygonCollider2D>().isTrigger = true;
         }
     }
-
+    public static void DisableCollider(GameObject weapon)
+    {
+        if (weapon.GetComponent<Collider2D>())
+        {
+            weapon.GetComponent<Collider2D>().enabled = false;
+        }
+        else if (weapon.GetComponent<BaseCustomCollider>())
+        {
+            weapon.GetComponent<BaseCustomCollider>().enabled = false;
+        }
+    }
     public static IEnumerator WaitForSecondsToDisableCollider(GameObject weapon,float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        Debug.Log("Collider Disabled!");
         DisableCollider(weapon);
     }
 }

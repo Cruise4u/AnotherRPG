@@ -6,98 +6,86 @@ using System.Collections.Generic;
 
 public class AbilityController : MonoBehaviour
 {
-    public WeaponAnimator weaponAnimator;
-    public WeaponAnimationData weaponAnimationData;
-    public Ability currentAbility;
     public AbilityAim abilityAim;
+    public AbilityAnimation abilityAnimation;
+    public AbilityAnimationData weaponAnimationData;
     public AbilityBookData abilityBookData;
     public AbilityHitHandler abilityHitCollider;
     public CooldownController cooldownController;
-
-
     public Vector2 offset;
     public Action<bool> BlockInputDelegate;
-
+    public int abilityArrayIndex;
 
     public void Init()
     {
         AbilityFactory.InitAbilityFactory();
-        weaponAnimator = new WeaponAnimator(transform.GetChild(0).gameObject);
-        weaponAnimator.weaponAnimation.SetAnimationSettings(weaponAnimationData);
-        abilityAim = new AbilityAim(transform, offset, weaponAnimator.weapon);
+        abilityAim = new AbilityAim(transform, offset, transform.GetChild(0).gameObject);
         abilityHitCollider = gameObject.transform.GetChild(0).GetComponent<AbilityHitHandler>();
         cooldownController = GetComponent<CooldownController>();
     }
-
-    public void SetCurrentAbility(int index)
+    
+    public void SetCurrentAbilityIndex(int index)
     {
-        currentAbility = AbilityFactory.GetAbilityByName(abilityBookData.abilityIdList[index]);
-        AbilityColliderConfigurator.SetCollider(weaponAnimator.weapon, currentAbility);
+        abilityArrayIndex = index;
     }
 
-    public void CastAbility()
+    public void CallAbilityLogic(IdType idType)
     {
-        if(!cooldownController.IsAbilityOnCooldown())
+        if(!cooldownController.IsAbilityOnCooldown() && abilityArrayIndex != -1)
         {
-            if(currentAbility.rangeType == RangeType.Melee)
+            var ability = AbilityFactory.GetAbilityByName(abilityBookData.abilityIdList[abilityArrayIndex]);
+            if (ability.rangeType == RangeType.Melee)
             {
-                AbilityColliderConfigurator.EnableCollider(weaponAnimator.weapon);
-                AnimateAbility(currentAbility);
-                StartCoroutine(WaitForSecondsBeforeProcessingAbility(0.25f));
-                StartCoroutine(CoroutineInputBlockage(0.85f));
+                AbilityColliderConfigurator.EnableCollider(abilityAim.weapon);
+                CallAbilityAnimation(ability);
+                StartCoroutine(ProcessAbilityRoutine(ability,0.25f));
+                StartCoroutine(BlockInputRoutine(0.85f));
                 cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
             }
             else
             {
-                AnimateAbility(currentAbility);
-                StartCoroutine(WaitForSecondsBeforeProcessingAbility(0.25f));
-                StartCoroutine(CoroutineInputBlockage(0.85f));
+                CallAbilityAnimation(ability);
+                StartCoroutine(ProcessAbilityRoutine(ability,0.25f));
+                StartCoroutine(BlockInputRoutine(0.85f));
                 cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
             }
         }
     }
 
-    public IEnumerator WaitForSecondsBeforeProcessingAbility(float time)
+    public void CallAbilityAnimation(Ability ability)
     {
-        yield return new WaitForSeconds(time);
-        currentAbility.ProcessAbility(abilityHitCollider.hittedTargetsList);
-    }
-
-    public void AnimateAbility(Ability ability)
-    {
-        if(ability != null)
+        if (ability != null)
         {
             var data = ability.colliderData;
+            var isAnglePositive = abilityAim.IsAnglePositive(abilityAim.GetAimAngle());
             switch (ability.animationType)
             {
                 case AnimationType.Swing:
-                    StartCoroutine(weaponAnimator.weaponAnimation.CoroutineSwingTweenAnimation(this));
+                    StartCoroutine(abilityAnimation.SwingAnimationRoutine(ability, abilityAim.weapon, isAnglePositive, BlockInputDelegate));
                     break;
-                case AnimationType.Circular:
-                    StartCoroutine(weaponAnimator.weaponAnimation.CoroutineFullCircleTweenAnimation(this));
+                case AnimationType.ThreeSixty:
+                    StartCoroutine(abilityAnimation.ThreeSixtyAnimationRoutine(ability, abilityAim.weapon, isAnglePositive, BlockInputDelegate));
                     break;
             }
         }
     }
 
-    public IEnumerator CoroutineInputBlockage(float seconds)
+    public void SetCasterAsParent(GameObject abilityPrefab)
+    {
+ 
+    }
+
+    public IEnumerator ProcessAbilityRoutine(Ability ability,float time)
+    {
+        yield return new WaitForSeconds(time);
+        ability.ProcessAbility(abilityHitCollider.hittedTargetsList);
+    }
+
+    public IEnumerator BlockInputRoutine(float seconds)
     {
         BlockInputDelegate.Invoke(true);
         yield return new WaitForSeconds(seconds);
         BlockInputDelegate.Invoke(false);
-    }
-
-}
-
-public class WeaponAnimator
-{
-    public GameObject weapon;
-    public WeaponAnimation weaponAnimation;
-
-    public WeaponAnimator(GameObject weapon)
-    {
-        this.weapon = weapon;
-        weaponAnimation = new WeaponAnimation();
     }
 
 }

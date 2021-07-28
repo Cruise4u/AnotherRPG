@@ -27,7 +27,7 @@ namespace QuestTales.Core.Abilities
     }
     public enum AnimationType
     {
-        Circular,
+        ThreeSixty,
         Ranged,
         Swing,
         Stab,
@@ -47,6 +47,10 @@ namespace QuestTales.Core.Abilities
 
         public abstract void ProcessAbility(List<GameObject> targets);
 
+        public abstract void InstantiateAbility(Vector3 position);
+
+        public abstract void SpawnParticles(Vector3 position);
+
         public abstract ColliderData colliderData { get; }
 
         public abstract AbilityStatsData abilityData { get; }
@@ -58,8 +62,6 @@ namespace QuestTales.Core.Abilities
             yield return new WaitForSeconds(seconds);
             AbilityColliderConfigurator.DisableCollider(weapon);
         }
-
-        public abstract void SpawnParticle();
     }
 }
 
