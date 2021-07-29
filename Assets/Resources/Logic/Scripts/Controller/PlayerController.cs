@@ -48,12 +48,16 @@ public class PlayerController : UnitController
 
     public void NumericKeyboardInputCallBack()
     {
+        if (abilityController.abilityArrayIndex < abilityController.abilityBookData.abilityIdList.Count)
+        {
+
+        }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             abilityController.abilityArrayIndex = 0;
             abilityController.cooldownController.lastSelectedId = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             abilityController.abilityArrayIndex = 1;
             abilityController.cooldownController.lastSelectedId = 1;

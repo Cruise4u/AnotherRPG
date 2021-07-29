@@ -11,9 +11,7 @@ namespace QuestTales.Core.Abilities.Paladin
     {
         public override IdType idType => IdType.HolyStrike;
         public override RangeType rangeType => RangeType.Melee;
-        public override ColliderType abilityColliderType => ColliderType.Fan;
         public override AnimationType animationType => AnimationType.ThreeSixty;
-        public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Paladin/Holystrike/HolyStrikeCollider");
         public override AbilityStatsData abilityStats => Resources.Load<AbilityStatsData>("Data/Ability/Paladin/HolyStrike/HolyStrikeStats");
         public override string poolName => "HolyStrikePool";
         public override void ProcessAbility(GameObject target)
@@ -45,17 +43,13 @@ namespace QuestTales.Core.Abilities.Paladin
 
     public class Smite : Ability,IDamager,IStunner
     {
-        public override string poolName => "SmiteParticlePool";
+        public override string poolName => "SmitePool";
 
         public override IdType idType => IdType.Smite;
 
         public override RangeType rangeType => RangeType.Range;
 
-        public override ColliderType abilityColliderType => ColliderType.Circle;
-
         public override AnimationType animationType => AnimationType.Ranged;
-
-        public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Paladin/Smite/SmiteCollider");
 
         public override AbilityStatsData abilityStats => Resources.Load<AbilityStatsData>("Data/Ability/Paladin/Smite/SmiteStats");
 

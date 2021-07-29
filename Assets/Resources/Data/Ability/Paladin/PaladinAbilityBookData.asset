@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8512d67061f4c42af032abd0ec380b, type: 3}
   m_Name: PaladinAbilityBookData
   m_EditorClassIdentifier: 
-  abilityIdList: 01000000
+  abilityIdList: 0100000002000000

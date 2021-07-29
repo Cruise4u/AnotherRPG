@@ -21,12 +21,12 @@ public class AbilityAnimation
     {
         Sequence sequence = DOTween.Sequence();
         inputBlockDelegate.Invoke(true);
+        var initialAngle = 20;
+        var finalAngle = 60;
         var weaponBasePosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
         var weaponTipPosition = weapon.transform.GetChild(0).GetChild(1).transform.position;
         var weaponDirection = (weaponTipPosition - weaponBasePosition).normalized * ability.abilityStats.range;
         var adjustedWeaponPosition = new Vector3(weapon.transform.position.x + weaponOffset.x, weapon.transform.position.y + weaponOffset.y, 0.0f);
-        var initialAngle = ability.colliderData.angle - 25.0f;
-        var finalAngle = ability.colliderData.angle + (25.0f * 2.0f);
         if(isAnglePositive != true)
         {
             initialAngle *= -1;
@@ -81,6 +81,29 @@ public class AbilityAnimation
         weapon.transform.localPosition = weaponLocalPosition;
         inputBlockDelegate.Invoke(false);
     }
-    
+
+    public IEnumerator RangedAnimationRoutine(Ability ability, GameObject weapon, bool isAnglePositive, Action<bool> inputBlockDelegate)
+    {
+        Sequence sequence = DOTween.Sequence();
+        inputBlockDelegate.Invoke(true);
+        var initialAngle = 40;
+        var finalAngle = 80;
+        var weaponBasePosition = weapon.transform.GetChild(0).GetChild(0).transform.position;
+        var weaponTipPosition = weapon.transform.GetChild(0).GetChild(1).transform.position;
+        var adjustedWeaponPosition = new Vector3(weapon.transform.position.x + weaponOffset.x, weapon.transform.position.y + weaponOffset.y, 0.0f);
+        if (isAnglePositive != true)
+        {
+            initialAngle *= -1;
+            finalAngle *= -1;
+        }
+        Quaternion initialRotation = Quaternion.Euler(0, 0, -initialAngle);
+        Quaternion finalRotation = Quaternion.Euler(0, 0, -finalAngle);
+        sequence.Append(weapon.transform.DOLocalRotate(initialRotation.eulerAngles, 0.15f));
+        sequence.Append(weapon.transform.DOLocalRotate(finalRotation.eulerAngles, 0.15f));
+        sequence.Play();
+        yield return sequence.WaitForCompletion();
+        inputBlockDelegate.Invoke(false);
+    }
+
 }
 

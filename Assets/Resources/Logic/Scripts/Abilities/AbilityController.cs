@@ -40,6 +40,17 @@ public class AbilityController : MonoBehaviour
                 StartCoroutine(ability.ReturnAbilityRoutine(instance, 1.0f));
                 cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
             }
+            else
+            {
+                StartCoroutine(BlockInputRoutine(1.0f));
+                CallAbilityAnimation(ability);
+                var instance = ability.InstantiateAbility(spawnPosition, abilityAim.weapon.transform.rotation);
+                instance.GetComponent<RangedProjectile>().SetProjectileOrientation(abilityAim.weapon.transform.rotation);
+                instance.GetComponent<RangedProjectile>().SetProjectileNewDirection(abilityAim.weapon,ability.abilityStats.range,1.0f);
+                instance.GetComponent<AbilityHitDetector>().ability = ability;
+                StartCoroutine(ability.ReturnAbilityRoutine(instance, 3));
+                cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
+            }
         }
     }
 
@@ -55,6 +66,9 @@ public class AbilityController : MonoBehaviour
                     break;
                 case AnimationType.ThreeSixty:
                     StartCoroutine(abilityAnimation.ThreeSixtyAnimationRoutine(ability, abilityAim.weapon, isAnglePositive, BlockInputDelegate));
+                    break;
+                case AnimationType.Ranged:
+                    StartCoroutine(abilityAnimation.RangedAnimationRoutine(ability, abilityAim.weapon, isAnglePositive, BlockInputDelegate));
                     break;
             }
         }
