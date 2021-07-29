@@ -6,40 +6,26 @@ using UnityEngine;
 namespace QuestTales.Core.Abilities.OrcGrunt
 {
     public class Bash : Ability, IDamager
-    { 
+    {
+        public override AbilityStatsData abilityStats => Resources.Load<AbilityStatsData>("Data/Ability/Orc/BashStatsData");
+        public override string poolName => throw new NotImplementedException();
         public override IdType idType => IdType.Bash;
-
         public override RangeType rangeType => RangeType.Melee;
-
-        public override ColliderType abilityColliderType => ColliderType.Fan;
-
         public override AnimationType animationType => AnimationType.Swing;
-
-        public override ColliderData colliderData => Resources.Load<ColliderData>("Data/Ability/Orc/BashCollider");
-
-        public override AbilityStatsData abilityData => Resources.Load<AbilityStatsData>("Data/Ability/Orc/BashStatsData");
-
-        public override string abilityParticlePoolName => throw new NotImplementedException();
-
-        public void DealDamage(IDamagable damagable)
+        public override void ProcessAbility(GameObject target)
         {
-            damagable.TakeDamage(abilityData.power);
-        }
-
-        public override void ProcessAbility(List<GameObject> targets)
-        {
-            if(targets != null & targets.Count > 0)
+            if (target != null)
             {
-                foreach (GameObject target in targets)
-                {
-                    DealDamage(target.transform.parent.GetComponent<UnitPhysiology>());
-                }
+                DealDamage(target.transform.parent.GetComponent<UnitPhysiology>());
             }
         }
-
-        public override void SpawnParticle()
+        public override void SpawnParticles(Vector3 position)
         {
             throw new NotImplementedException();
+        }
+        public void DealDamage(IDamagable damagable)
+        {
+            damagable.TakeDamage(abilityStats.power);
         }
     }
 }

@@ -33,7 +33,7 @@ public class AIController : UnitController
         var direction = (target.transform.position-transform.position).normalized;
         var newDirection = transform.position + direction;
         abilityController.abilityAim.SetAimDirection(newDirection);
-        float angle = abilityController.abilityAim.GetUnitCircleAimAngle();
+        float angle = abilityController.abilityAim.GetAimAngle();
         abilityController.abilityAim.AimWeaponTowardsDirection(angle,abilityController.offset);
     }
 }

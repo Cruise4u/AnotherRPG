@@ -19,7 +19,7 @@ public class PlayerController : UnitController
     {
         var direction = cameraManager.baseCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraManager.baseCamera.nearClipPlane));
         abilityController.abilityAim.SetAimDirection(direction);
-        float angle = abilityController.abilityAim.GetUnitCircleAimAngle();
+        float angle = abilityController.abilityAim.GetAimAngle();
         abilityController.abilityAim.AimWeaponTowardsDirection(angle,abilityController.offset);
     }
 
@@ -48,18 +48,27 @@ public class PlayerController : UnitController
 
     public void NumericKeyboardInputCallBack()
     {
+        if (abilityController.abilityArrayIndex < abilityController.abilityBookData.abilityIdList.Count)
+        {
+
+        }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            abilityController.abilityArrayIndex = 0;
             abilityController.cooldownController.lastSelectedId = 0;
-            abilityController.SetCurrentAbility(abilityController.cooldownController.lastSelectedId);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            abilityController.abilityArrayIndex = 1;
+            abilityController.cooldownController.lastSelectedId = 1;
         }
     }
 
     public void AbilityInput()
     {
-        if(Input.GetMouseButtonDown(0) && abilityController.currentAbility != null)
+        if(Input.GetMouseButtonDown(0) && abilityController.abilityArrayIndex != -1)
         {
-            abilityController.CastAbility();
+            abilityController.CallAbilityLogic(abilityController.abilityBookData.abilityIdList[abilityController.abilityArrayIndex],abilityController.abilityAim.weapon.transform.position);
         }
     }
 

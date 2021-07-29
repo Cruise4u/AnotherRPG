@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 10
   cost: 0
+  range: 1
   cooldown: 3

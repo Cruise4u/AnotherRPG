@@ -28,10 +28,5 @@ public class BaseStats : MonoBehaviour
         speed = data.speed;
         armor = data.armor;
     }
-
-    public void Start()
-    {
-        SetStats(unitStatsData);
-    }
 }
 

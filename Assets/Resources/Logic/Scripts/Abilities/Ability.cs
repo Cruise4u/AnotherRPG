@@ -27,39 +27,31 @@ namespace QuestTales.Core.Abilities
     }
     public enum AnimationType
     {
-        Circular,
+        ThreeSixty,
         Ranged,
         Swing,
         Stab,
     }
-
     public abstract class Ability
     {
-        public AbilityHitHandler abilityColliderDetector;
-
+        public abstract AbilityStatsData abilityStats { get; }
+        public abstract string poolName { get; }
         public abstract IdType idType { get; }
-
         public abstract RangeType rangeType { get; }
-
-        public abstract ColliderType abilityColliderType { get; }
-
         public abstract AnimationType animationType { get; }
-
-        public abstract void ProcessAbility(List<GameObject> targets);
-
-        public abstract ColliderData colliderData { get; }
-
-        public abstract AbilityStatsData abilityData { get; }
-
-        public abstract string abilityParticlePoolName { get; }
-
-        public virtual IEnumerator DisableColliderAfterSeconds(GameObject weapon, float seconds)
+        public abstract void ProcessAbility(GameObject target);
+        public virtual GameObject InstantiateAbility(Vector3 position, Quaternion rotation)
         {
-            yield return new WaitForSeconds(seconds);
-            AbilityColliderConfigurator.DisableCollider(weapon);
+            var instance = ObjectPool.Instance.SpawnPoolObject(poolName, position);
+            instance.transform.rotation = rotation;
+            return instance;
         }
-
-        public abstract void SpawnParticle();
+        public virtual IEnumerator ReturnAbilityRoutine(GameObject instance,float time)
+        {
+            yield return new WaitForSeconds(time);
+            ObjectPool.Instance.ReturnToPool(poolName,instance);
+        }
+        public abstract void SpawnParticles(Vector3 position);
     }
 }
 
