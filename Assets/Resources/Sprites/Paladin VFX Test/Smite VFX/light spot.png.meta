@@ -1,0 +1,1908 @@
+fileFormatVersion: 2
+guid: b6de59da94c006d4d93f674b44139cad
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3431708930986861138
+    second: light spot_0
+  - first:
+      213: -8353830972668730595
+    second: light spot_1
+  - first:
+      213: 1453876368935096344
+    second: light spot_2
+  - first:
+      213: 3007401523567899896
+    second: light spot_3
+  - first:
+      213: 8546814083432646527
+    second: light spot_4
+  - first:
+      213: -7399753429115032106
+    second: light spot_5
+  - first:
+      213: -2607317868398951664
+    second: light spot_6
+  - first:
+      213: -3568161336068094215
+    second: light spot_7
+  - first:
+      213: -9138750320023446260
+    second: light spot_8
+  - first:
+      213: 9089372417810340296
+    second: light spot_9
+  - first:
+      213: -6382349125519614281
+    second: light spot_10
+  - first:
+      213: 6861218041316371246
+    second: light spot_11
+  - first:
+      213: -1910601221725142934
+    second: light spot_12
+  - first:
+      213: 5726443314823739369
+    second: light spot_13
+  - first:
+      213: -2871350256119581245
+    second: light spot_14
+  - first:
+      213: -3253221893988184637
+    second: light spot_15
+  - first:
+      213: 7544697271883873637
+    second: light spot_16
+  - first:
+      213: -4545343372976630293
+    second: light spot_17
+  - first:
+      213: -1443052533723016344
+    second: light spot_18
+  - first:
+      213: -7852917372847378543
+    second: light spot_19
+  - first:
+      213: 101740615140851179
+    second: light spot_20
+  - first:
+      213: -7178131526479287290
+    second: light spot_21
+  - first:
+      213: -6459770314368789543
+    second: light spot_22
+  - first:
+      213: 7662138316090801917
+    second: light spot_23
+  - first:
+      213: 5899290924464861384
+    second: light spot_24
+  - first:
+      213: -5805607867779092344
+    second: light spot_25
+  - first:
+      213: -8093165104479256885
+    second: light spot_26
+  - first:
+      213: -2659774693713086296
+    second: light spot_27
+  - first:
+      213: 6656318211229035464
+    second: light spot_28
+  - first:
+      213: 2808477894456165303
+    second: light spot_29
+  - first:
+      213: 4749648817681374910
+    second: light spot_30
+  - first:
+      213: -1042099574874543669
+    second: light spot_31
+  - first:
+      213: -472528164995189007
+    second: light spot_32
+  - first:
+      213: -6291158459677335147
+    second: light spot_33
+  - first:
+      213: 2619445086368656707
+    second: light spot_34
+  - first:
+      213: -1775366013898112062
+    second: light spot_35
+  - first:
+      213: -4334006798675613509
+    second: light spot_36
+  - first:
+      213: -4868611424925269128
+    second: light spot_37
+  - first:
+      213: 5586055102449096478
+    second: light spot_38
+  - first:
+      213: 3867169488174652294
+    second: light spot_39
+  - first:
+      213: -6278240170403644142
+    second: light spot_40
+  - first:
+      213: 6955382905225919960
+    second: light spot_41
+  - first:
+      213: 5527253739646813503
+    second: light spot_42
+  - first:
+      213: 6195817313099620403
+    second: light spot_43
+  - first:
+      213: -2874509926454572514
+    second: light spot_44
+  - first:
+      213: 6277582016067133905
+    second: light spot_45
+  - first:
+      213: -2774147303460250263
+    second: light spot_46
+  - first:
+      213: -3924980405262695134
+    second: light spot_47
+  - first:
+      213: 3975239071351892943
+    second: light spot_48
+  - first:
+      213: 1515558299024280631
+    second: light spot_49
+  - first:
+      213: 7985192992575401773
+    second: light spot_50
+  - first:
+      213: -8175226400535662850
+    second: light spot_51
+  - first:
+      213: 6378706018442512383
+    second: light spot_52
+  - first:
+      213: 6540086516727485624
+    second: light spot_53
+  - first:
+      213: 2029274043805422546
+    second: light spot_54
+  - first:
+      213: 2261256092020260854
+    second: light spot_55
+  - first:
+      213: 3418356485643723895
+    second: light spot_56
+  - first:
+      213: 4104624821961724350
+    second: light spot_57
+  - first:
+      213: -4900748459448047886
+    second: light spot_58
+  - first:
+      213: -9015722259162367238
+    second: light spot_59
+  - first:
+      213: 8449429265820261518
+    second: light spot_60
+  - first:
+      213: 3609774830891155419
+    second: light spot_61
+  - first:
+      213: -41077890112135781
+    second: light spot_62
+  - first:
+      213: 1189156115632545020
+    second: light spot_63
+  - first:
+      213: -6699703305574217468
+    second: light spot_64
+  - first:
+      213: 6752904565375822753
+    second: light spot_65
+  - first:
+      213: -7402599776691375120
+    second: light spot_66
+  - first:
+      213: 7987672737232192098
+    second: light spot_67
+  - first:
+      213: -5487182246306441986
+    second: light spot_68
+  - first:
+      213: 6820816150563424440
+    second: light spot_69
+  - first:
+      213: 5351717916173003359
+    second: light spot_70
+  - first:
+      213: -253244102358182926
+    second: light spot_71
+  - first:
+      213: 6207201503426949720
+    second: light spot_72
+  - first:
+      213: 8759313656502508823
+    second: light spot_73
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: light spot_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 825
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 252e10c3711ef9f20800000000000000
+      internalID: 3431708930986861138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 825
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d13ac68adfa311c80800000000000000
+      internalID: -8353830972668730595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_2
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 824
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81016b5cad43d2410800000000000000
+      internalID: 1453876368935096344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_3
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 825
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4bb3570cf6cb920800000000000000
+      internalID: 3007401523567899896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_4
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 823
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f770f4c30226c9670800000000000000
+      internalID: 8546814083432646527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_5
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 824
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ddae18367bce4990800000000000000
+      internalID: -7399753429115032106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_6
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 824
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0134d8d7632f0dbd0800000000000000
+      internalID: -2607317868398951664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_7
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 824
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f6c0667b285b7ec0800000000000000
+      internalID: -3568161336068094215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_8
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 824
+        width: 44
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0dd30cc003ac2180800000000000000
+      internalID: -9138750320023446260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_9
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 724
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c991d27e00f32e70800000000000000
+      internalID: 9089372417810340296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_10
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 724
+        width: 44
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bed0e419475d67a0800000000000000
+      internalID: -6382349125519614281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_11
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 725
+        width: 44
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2be92fc471f73f50800000000000000
+      internalID: 6861218041316371246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_12
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 725
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6045a7cf4e2c75e0800000000000000
+      internalID: -1910601221725142934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_13
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 724
+        width: 44
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e7ba76dad9687f40800000000000000
+      internalID: 5726443314823739369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_14
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 724
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c5f346b72ae628d0800000000000000
+      internalID: -2871350256119581245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_15
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 725
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd8f497ceb3ad2d0800000000000000
+      internalID: -3253221893988184637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_16
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 724
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d3f7cf13624b860800000000000000
+      internalID: 7544697271883873637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_17
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 724
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be55d87d842bbe0c0800000000000000
+      internalID: -4545343372976630293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_18
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 624
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 863563fbd5f39fbe0800000000000000
+      internalID: -1443052533723016344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_19
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 625
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f20f48145d40390800000000000000
+      internalID: -7852917372847378543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_20
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 623
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed33b8ec84796100800000000000000
+      internalID: 101740615140851179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_21
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 623
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c6b257867226c90800000000000000
+      internalID: -7178131526479287290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_22
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 623
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d35f69df194a56a0800000000000000
+      internalID: -6459770314368789543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_23
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 624
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfe7086e332655a60800000000000000
+      internalID: 7662138316090801917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_24
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 624
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c0f96b07dd7ed150800000000000000
+      internalID: 5899290924464861384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_25
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 624
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88070d757665e6fa0800000000000000
+      internalID: -5805607867779092344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_26
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 624
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce3de6873d4faf80800000000000000
+      internalID: -8093165104479256885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_27
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 524
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a878a61205961bd0800000000000000
+      internalID: -2659774693713086296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_28
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 524
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cb254c752eff5c50800000000000000
+      internalID: 6656318211229035464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_29
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 524
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b3c89ad3c7b9f620800000000000000
+      internalID: 2808477894456165303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_30
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 524
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe90c95f642ae140800000000000000
+      internalID: 4749648817681374910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_31
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 524
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9640b35f7b981f0800000000000000
+      internalID: -1042099574874543669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_32
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 525
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f63813332e3179f0800000000000000
+      internalID: -472528164995189007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_33
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 524
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5912d3186b051b8a0800000000000000
+      internalID: -6291158459677335147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_34
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 524
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d65a97d632a5420800000000000000
+      internalID: 2619445086368656707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_35
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 524
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c34d434402ac57e0800000000000000
+      internalID: -1775366013898112062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_36
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 424
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb8efc677c38ad3c0800000000000000
+      internalID: -4334006798675613509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_37
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 424
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 873cbeb34b73f6cb0800000000000000
+      internalID: -4868611424925269128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_38
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 424
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e179c3df487a58d40800000000000000
+      internalID: 5586055102449096478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_39
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 424
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b11ec0922faa530800000000000000
+      internalID: 3867169488174652294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_40
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 423
+        width: 41
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21db08c14d53fd8a0800000000000000
+      internalID: -6278240170403644142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_41
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 423
+        width: 43
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ddb0dea6eb768060800000000000000
+      internalID: 6955382905225919960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_42
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 423
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f350917ddffb4bc40800000000000000
+      internalID: 5527253739646813503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_43
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 424
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 330a488f407fbf550800000000000000
+      internalID: 6195817313099620403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_44
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 424
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1a4752a370bb18d0800000000000000
+      internalID: -2874509926454572514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_45
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 324
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d1ef0465937e1750800000000000000
+      internalID: 6277582016067133905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_46
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 324
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96dd4aeb9bf3089d0800000000000000
+      internalID: -2774147303460250263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_47
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 324
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 225c2f9ed1ba789c0800000000000000
+      internalID: -3924980405262695134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_48
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 324
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcbee29afd2ea2730800000000000000
+      internalID: 3975239071351892943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_49
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 324
+        width: 43
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73cccb14e38580510800000000000000
+      internalID: 1515558299024280631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_50
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 324
+        width: 43
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f256928ba11de60800000000000000
+      internalID: 7985192992575401773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_51
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 324
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe2da527e2cb8e80800000000000000
+      internalID: -8175226400535662850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_52
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 324
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff789e3f357b58850800000000000000
+      internalID: 6378706018442512383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_53
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 325
+        width: 44
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b41ddd390e03ca50800000000000000
+      internalID: 6540086516727485624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_54
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 225
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d351f4cdfd692c10800000000000000
+      internalID: 2029274043805422546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_55
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ff3e0f5f68916f10800000000000000
+      internalID: 2261256092020260854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_56
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 223
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774627acc11707f20800000000000000
+      internalID: 3418356485643723895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_57
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 224
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb19741478e86f830800000000000000
+      internalID: 4104624821961724350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_58
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 224
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f66e0dcd3b0dfbb0800000000000000
+      internalID: -4900748459448047886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_59
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 224
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa7b056f58b1e280800000000000000
+      internalID: -9015722259162367238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_60
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 224
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8c91087627624570800000000000000
+      internalID: 8449429265820261518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_61
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 224
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdfb962551f781230800000000000000
+      internalID: 3609774830891155419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_62
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 224
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d5eb760ef0e6ff0800000000000000
+      internalID: -41077890112135781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_63
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 125
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfcd2cecf2bb08010800000000000000
+      internalID: 1189156115632545020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_64
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 125
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4090db2175fd503a0800000000000000
+      internalID: -6699703305574217468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_65
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 125
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1abe65d7ce227bd50800000000000000
+      internalID: 6752904565375822753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_66
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 125
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3bce749bea44990800000000000000
+      internalID: -7402599776691375120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_67
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 125
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2620cc4b80ae9de60800000000000000
+      internalID: 7987672737232192098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_68
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 129
+        width: 36
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef4131fb1dc99d3b0800000000000000
+      internalID: -5487182246306441986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_69
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 126
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b88494962868ae50800000000000000
+      internalID: 6820816150563424440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_70
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 135
+        width: 35
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ae593171f154a40800000000000000
+      internalID: 5351717916173003359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_71
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 135
+        width: 35
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f35a75a4db4c7cf0800000000000000
+      internalID: -253244102358182926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_72
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 39
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 852b80551e8642650800000000000000
+      internalID: 6207201503426949720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light spot_73
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 44
+        width: 27
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71d5f0c9c555f8970800000000000000
+      internalID: 8759313656502508823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
