@@ -4,21 +4,11 @@ using UnityEngine;
 
 public class VFXController : MonoBehaviour
 {
-    public Animator vfxAnimator;
-
-    public void Update()
+    public GameObject[] vfxObjectArray;
+    public void CallVfx(int index, bool isAnglePositive)
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            BeginVFXAnimation();
-        }
+        vfxObjectArray[index].SetActive(true);
+        StartCoroutine(vfxObjectArray[index].GetComponent<VFXBase>().TriggerVfxRoutine(0.7f, isAnglePositive));
     }
-
-    public void BeginVFXAnimation()
-    {
-        vfxAnimator.SetTrigger("vfxTrigger");
-    }
-
-
-
 }
+
