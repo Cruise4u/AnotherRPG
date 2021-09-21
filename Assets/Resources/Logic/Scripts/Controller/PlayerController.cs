@@ -74,7 +74,7 @@ public class PlayerController : UnitController
 
     public void UpdatePlayerController()
     {
-        if (isInputBlocked != true)
+        if(isInputBlocked == false)
         {
             MoveInput();
             NumericKeyboardInputCallBack();

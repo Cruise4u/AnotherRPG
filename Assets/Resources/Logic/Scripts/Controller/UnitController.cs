@@ -8,7 +8,7 @@ public abstract class UnitController : MonoBehaviour
 {
     protected AbilityController abilityController;
     protected UnitPhysiology combatController;
-    protected bool isInputBlocked;
+    public bool isInputBlocked;
 
     public abstract void AimInput();
 
@@ -20,6 +20,7 @@ public abstract class UnitController : MonoBehaviour
     public virtual void BlockInput(bool condition)
     {
         isInputBlocked = condition;
+        Debug.Log(isInputBlocked);
     }
 
     public virtual void Init()

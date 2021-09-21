@@ -35,11 +35,13 @@ public class AbilityAim
         {
             weapon.transform.position = new Vector3(transform.position.x + offset.x, transform.position.y - offset.y, 0.0f);
             weapon.transform.rotation = Quaternion.Euler(0, 0, -angle);
+            weapon.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
         }
         else if (angle > 180.0f && angle < 360.0f)
         {
             weapon.transform.position = new Vector3(transform.position.x - offset.x, transform.position.y - offset.y, 0.0f);
-            weapon.transform.rotation = Quaternion.Euler(0, -180, angle);
+            weapon.transform.rotation = Quaternion.Euler(0, 0, -angle);
+            weapon.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 

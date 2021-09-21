@@ -16,6 +16,9 @@ public class AbilityController : MonoBehaviour
     public Vector2 offset;
     public Action<bool> BlockInputDelegate;
 
+    public bool isAimBlocked;
+
+
     public void Init()
     {
         AbilityFactory.InitAbilityFactory();
@@ -32,7 +35,7 @@ public class AbilityController : MonoBehaviour
             var ability = AbilityFactory.GetAbilityByName(abilityBookData.abilityIdList[abilityArrayIndex]);
             if (ability.rangeType == RangeType.Melee)
             {
-                StartCoroutine(BlockInputRoutine(1.0f));
+                StartCoroutine(BlockInputRoutine(0.65f));
                 CallAbilityAnimation(ability);
                 var instance = ability.InstantiateAbility(spawnPosition,abilityAim.weapon.transform.rotation);
                 SetCasterAsParent(instance);
@@ -42,7 +45,7 @@ public class AbilityController : MonoBehaviour
             }
             else
             {
-                StartCoroutine(BlockInputRoutine(1.0f));
+                StartCoroutine(BlockInputRoutine(0.65f));
                 CallAbilityAnimation(ability);
                 var instance = ability.InstantiateAbility(spawnPosition, abilityAim.weapon.transform.rotation);
                 instance.GetComponent<RangedProjectile>().SetProjectileOrientation(abilityAim.weapon.transform.rotation);
@@ -66,6 +69,7 @@ public class AbilityController : MonoBehaviour
                     break;
                 case AnimationType.ThreeSixty:
                     StartCoroutine(abilityAnimation.ThreeSixtyAnimationRoutine(ability, abilityAim.weapon, isAnglePositive, BlockInputDelegate));
+                    GetComponent<VFXController>().CallVfx(abilityArrayIndex, isAnglePositive);
                     break;
                 case AnimationType.Ranged:
                     StartCoroutine(abilityAnimation.RangedAnimationRoutine(ability, abilityAim.weapon, isAnglePositive, BlockInputDelegate));
