@@ -6,7 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class HolyStrikeVFX : VFXBase
 {
     public GameObject twirlVFXObject;
-    public GameObject flareVFXObject;
+
     public void ChangeSpriteOrientation(GameObject vfxObject, bool isAnglePositive)
     {
         if (isAnglePositive == true)
@@ -24,7 +24,7 @@ public class HolyStrikeVFX : VFXBase
     }
     public void ChangeLightIntensity()
     {
-        twirlVFXObject.GetComponent<Light2D>().intensity += Time.deltaTime * 5;
+        twirlVFXObject.GetComponent<Light2D>().intensity += Time.deltaTime * 3.75f;
     }
     public override void ClearVFX(GameObject vfxObject)
     {
@@ -35,19 +35,15 @@ public class HolyStrikeVFX : VFXBase
     public override IEnumerator TriggerVfxRoutine(float time, bool isAnglePositive)
     {
         ChangeSpriteOrientation(twirlVFXObject, isAnglePositive);
-        ChangeSpriteOrientation(flareVFXObject, isAnglePositive);
         SetAlphaCut(twirlVFXObject, 0.1f);
-        SetAlphaCut(flareVFXObject, 0.1f);
         SetInitialLightIntensity();
         yield return new WaitForSeconds(time);
         ClearVFX(twirlVFXObject);
-        ClearVFX(flareVFXObject);
     }
 
     public void Update()
     {
         ChangeAlphaCutValue(twirlVFXObject);
-        ChangeAlphaCutValue(flareVFXObject);
         ChangeLightIntensity();
     }
 

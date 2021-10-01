@@ -15,9 +15,7 @@ public class AbilityController : MonoBehaviour
     public int abilityArrayIndex;
     public Vector2 offset;
     public Action<bool> BlockInputDelegate;
-
     public bool isAimBlocked;
-
 
     public void Init()
     {
@@ -35,7 +33,7 @@ public class AbilityController : MonoBehaviour
             var ability = AbilityFactory.GetAbilityByName(abilityBookData.abilityIdList[abilityArrayIndex]);
             if (ability.rangeType == RangeType.Melee)
             {
-                StartCoroutine(BlockInputRoutine(0.65f));
+                StartCoroutine(BlockInputRoutine(0.85f));
                 CallAbilityAnimation(ability);
                 var instance = ability.InstantiateAbility(spawnPosition,abilityAim.weapon.transform.rotation);
                 SetCasterAsParent(instance);
@@ -45,7 +43,7 @@ public class AbilityController : MonoBehaviour
             }
             else
             {
-                StartCoroutine(BlockInputRoutine(0.65f));
+                StartCoroutine(BlockInputRoutine(0.85f));
                 CallAbilityAnimation(ability);
                 var instance = ability.InstantiateAbility(spawnPosition, abilityAim.weapon.transform.rotation);
                 instance.GetComponent<RangedProjectile>().SetProjectileOrientation(abilityAim.weapon.transform.rotation);
