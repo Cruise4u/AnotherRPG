@@ -15,8 +15,8 @@ public class AbilityHitDetector : MonoBehaviour
             if(collider.CompareTag("Enemy") && collider != gameObject.GetComponent<Collider2D>() && collider.isTrigger != false)
             {
                 Debug.Log("hitted enemy!");
-                ability.ProcessAbility(collider.gameObject);
-                collider.transform.parent.GetComponent<UnitPhysiology>().pushDirection = transform.position;
+                collider.transform.parent.GetComponent<TargetReference>().pushDirection = transform.position;
+                ability.Execute(collider.gameObject.GetComponent<TargetReference>());
             }
         }
         else if (gameObject.CompareTag("Enemy"))
@@ -24,9 +24,11 @@ public class AbilityHitDetector : MonoBehaviour
             if (collider.gameObject.CompareTag("Player") && collider != gameObject.GetComponent<Collider2D>() && collider.isTrigger != false)
             {
                 ability.ProcessAbility(collider.gameObject);
-                collider.transform.parent.GetComponent<UnitPhysiology>().pushDirection = transform.position;
+                collider.transform.parent.GetComponent<TargetReference>().pushDirection = transform.position;
             }
         }
     }
+
+
 }
 

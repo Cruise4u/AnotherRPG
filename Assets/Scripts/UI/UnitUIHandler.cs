@@ -10,14 +10,14 @@ public class UnitUIHandler : MonoBehaviour
     public Image healthBar;
     public bool isPlayer;
 
-    public void DisplayFloatingText(string poolName,int damageReference)
+    public void DisplayFloatingText(ObjectPoolRef poolName,int damageReference)
     {
         var floatingText = ObjectPool.Instance.SpawnPoolObject(poolName, worldCanvas.transform.position);
         floatingText.transform.SetParent(worldCanvas.transform);
         floatingText.GetComponent<CombatTextToast>().ConvertDamageToText(damageReference);
     }
     
-    public void UpdateHealthValue(BaseStats baseStats)
+    public void UpdateHealthValue(UnitStats baseStats)
     {
         if (healthBar != null)
         {

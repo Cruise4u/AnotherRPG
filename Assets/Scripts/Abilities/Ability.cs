@@ -1,11 +1,12 @@
-﻿using System;
+﻿using QuestTales.Core.Abilities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace QuestTales.Core.Abilities
 {
-    public enum IdType
+    public enum AbilityID
     {
         DivineShield,
         HolyStrike,
@@ -13,7 +14,6 @@ namespace QuestTales.Core.Abilities
         Bash,
         Charge,
     }
-
     public enum RangeType
     {
         Melee,
@@ -34,54 +34,12 @@ namespace QuestTales.Core.Abilities
         Stab,
     }
 
-    public abstract class Ability
+    public abstract class Ability : ScriptableObject
     {
-        public abstract AbilityStatsData abilityStats { get; }
-        public abstract string poolName { get; }
-        public abstract IdType idType { get; }
-        public abstract RangeType rangeType { get; }
-        public abstract AnimationType animationType { get; }
-        public abstract void ProcessAbility(GameObject target);
-        public virtual GameObject InstantiateAbility(Vector3 position, Quaternion rotation)
-        {
-            var instance = ObjectPool.Instance.SpawnPoolObject(poolName, position);
-            instance.transform.rotation = rotation;
-            return instance;
-        }
-        public virtual IEnumerator ReturnAbilityRoutine(GameObject instance,float time)
-        {
-            yield return new WaitForSeconds(time);
-            ObjectPool.Instance.ReturnToPool(poolName,instance);
-        }
-        public abstract void SpawnParticles(Vector3 position);
+        public AbilityReferences skillReferences;
+        public AbilityStats abilityStats;
+        public abstract void Execute(TargetReference targetReference);
     }
+
+
 }
-
-
-
-//public interface IAbilityFactory
-//{
-//    IAbilityProduct CreateAbilityProduct();
-//}
-
-//public interface IAbilityProduct
-//{
-//    void ProcessAbility();
-//}
-
-//public class AbFactory : IAbilityFactory
-//{
-//    public IAbilityProduct CreateAbilityProduct()
-//    {
-//        return new Fireball();
-//    }
-//}
-
-//public class Fireball : IAbilityProduct
-//{
-//    public void ProcessAbility()
-//    {
-//        throw new NotImplementedException();
-//    }
-//}
-

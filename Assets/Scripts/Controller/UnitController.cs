@@ -8,12 +8,12 @@ public abstract class UnitController : MonoBehaviour
 {
     public bool isInputBlocked;
     protected AbilityController abilityController;
-    protected UnitPhysiology combatController;
+    protected TargetReference combatController;
 
     public abstract void AimInput();
     public virtual void Init()
     {
-        combatController = GetComponent<UnitPhysiology>();
+        combatController = GetComponent<TargetReference>();
         abilityController = GetComponent<AbilityController>();
         abilityController.Init();
         abilityController.BlockInputDelegate += BlockInput;

@@ -7,71 +7,49 @@ using System.Collections.Generic;
 public class AbilityController : MonoBehaviour
 {
     public AbilityAim abilityAim;
-    public AbilityAnimation abilityAnimation;
-    public AbilityAnimationData abilityAnimationData;
-    public AbilityBookData abilityBookData;
+    public AbilityContainer abilityContainer;
     public AbilityHitDetector abilityHitCollider;
     public CooldownController cooldownController;
-    public int abilityArrayIndex;
-    public Vector2 offset;
+
+    //public AbilityAnimation abilityAnimation;
+    public AbilityAnimationData abilityAnimationData;
+
     public Action<bool> BlockInputDelegate;
     public bool isAimBlocked;
+    public Vector2 offset;
+    public int abilityArrayIndex;
 
     public void Init()
     {
-        AbilityFactory.InitAbilityFactory();
         abilityAim = new AbilityAim(transform, offset, transform.GetChild(0).gameObject);
-        abilityAnimation = new AbilityAnimation(abilityAnimationData, transform);
         abilityHitCollider = gameObject.transform.GetChild(0).GetComponent<AbilityHitDetector>();
         cooldownController = GetComponent<CooldownController>();
     }
-    
-    public void CallAbilityLogic(IdType idType,Vector3 spawnPosition)
+    public void CallAbilityLogic(AbilityID abilityID, Vector3 spawnPosition)
     {
-        if(!cooldownController.IsAbilityOnCooldown())
+        if (!cooldownController.IsAbilityOnCooldown())
         {
-            var ability = AbilityFactory.GetAbilityByName(abilityBookData.abilityIdList[abilityArrayIndex]);
-            if (ability.rangeType == RangeType.Melee)
+            var ability = abilityContainer.abilityDictionary[abilityID];
+            if (ability.skillReferences.rangeType == RangeType.Melee)
             {
                 StartCoroutine(BlockInputRoutine(0.85f));
-                CallAbilityAnimation(ability);
-                var instance = ability.InstantiateAbility(spawnPosition,abilityAim.weapon.transform.rotation);
-                SetCasterAsParent(instance);
-                instance.GetComponent<AbilityHitDetector>().ability = ability;
-                StartCoroutine(ability.ReturnAbilityRoutine(instance, 1.0f));
-                cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
+                var abilityInstance = ObjectPool.Instance.SpawnPoolObject(ability.skillReferences.poolName,spawnPosition);
+                abilityInstance.GetComponent<AbilityHitDetector>().ability = ability;
+                //CallAbilityAnimation(ability);
+                SetCasterAsParent(abilityInstance);
+                ObjectPool.Instance.ReturnAbilityRoutine(ability.skillReferences.poolName, abilityInstance, 1.0f);
+                cooldownController.SetCooldownToMaximum(ability);
             }
             else
             {
-                StartCoroutine(BlockInputRoutine(0.85f));
-                CallAbilityAnimation(ability);
-                var instance = ability.InstantiateAbility(spawnPosition, abilityAim.weapon.transform.rotation);
-                instance.GetComponent<RangedProjectile>().SetProjectileOrientation(abilityAim.weapon.transform.rotation);
-                instance.GetComponent<RangedProjectile>().SetProjectileNewDirection(abilityAim.weapon,ability.abilityStats.range,1.0f);
-                instance.GetComponent<AbilityHitDetector>().ability = ability;
-                StartCoroutine(ability.ReturnAbilityRoutine(instance, 3));
-                cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
-            }
-        }
-    }
-
-    public void CallAbilityAnimation(Ability ability)
-    {
-        if (ability != null)
-        {
-            var isAnglePositive = abilityAim.IsAnglePositive(abilityAim.GetAimAngle());
-            switch (ability.animationType)
-            {
-                case AnimationType.Swing:
-                    StartCoroutine(abilityAnimation.SwingAnimationRoutine(ability, abilityAim.weapon, isAnglePositive, BlockInputDelegate));
-                    break;
-                case AnimationType.ThreeSixty:
-                    StartCoroutine(abilityAnimation.ThreeSixtyAnimationRoutine(ability, abilityAim.weapon, isAnglePositive, BlockInputDelegate));
-                    GetComponent<VFXController>().CallVfx(abilityArrayIndex, isAnglePositive);
-                    break;
-                case AnimationType.None:
-                    StartCoroutine(abilityAnimation.RangedAnimationRoutine(ability, abilityAim.weapon, isAnglePositive, BlockInputDelegate));
-                    break;
+                //StartCoroutine(BlockInputRoutine(0.85f));
+                //CallAbilityAnimation(ability);
+                //var instance = ability.InstantiateAbility(spawnPosition, abilityAim.weapon.transform.rotation);
+                //instance.GetComponent<RangedProjectile>().SetProjectileOrientation(abilityAim.weapon.transform.rotation);
+                //instance.GetComponent<RangedProjectile>().SetProjectileNewDirection(abilityAim.weapon, ability.abilityStats.range, 1.0f);
+                //instance.GetComponent<AbilityHitDetector>().ability = ability;
+                //StartCoroutine(ability.ReturnAbilityRoutine(instance, 3));
+                //cooldownController.SetCooldownToMaximum(abilityBookData.abilityIdList);
             }
         }
     }

@@ -6,5 +6,5 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class AbilityBookData : ScriptableObject
 {
-    public List<IdType> abilityIdList;
+    public List<AbilityID> abilityIdList;
 }

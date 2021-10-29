@@ -15,7 +15,7 @@ public class CooldownController : MonoBehaviour
         abilityReadyList = new List<bool>();
     }
 
-    public void AddCooldownToList(List<IdType> abilityIdList)
+    public void AddCooldownToList(List<AbilityID> abilityIdList)
     {
         for(int i = 0; i < abilityIdList.ToArray().Length; i++)
         {
@@ -25,14 +25,13 @@ public class CooldownController : MonoBehaviour
         }
     }
 
-    public void SetCooldownToMaximum(List<IdType> abilityIdList)
+    public void SetCooldownToMaximum(Ability ability)
     {
-        var idType = AbilityFactory.GetAbilityByName(abilityIdList[lastSelectedId]).idType;
-        cooldownList[lastSelectedId] = AbilityFactory.GetAbilityByName(idType).abilityStats.cooldown;
+        cooldownList[lastSelectedId] = ability.abilityStats.cooldown;
         abilityReadyList[lastSelectedId] = false;
     }
 
-    public void IterateThroughAbilitiesOnCooldown(List<IdType> abilityIdList)
+    public void IterateThroughAbilitiesOnCooldown(List<AbilityID> abilityIdList)
     {
         for(int i = 0; i< cooldownList.ToArray().Length; i++)
         {

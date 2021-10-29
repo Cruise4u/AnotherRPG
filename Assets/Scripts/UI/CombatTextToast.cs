@@ -29,7 +29,7 @@ public class CombatTextToast : MonoBehaviour
     public IEnumerator WaitForTextToBeDestroyed(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        ObjectPool.Instance.ReturnToPool("TextPool", gameObject);
+        ObjectPool.Instance.ReturnToPool(ObjectPoolRef.AnotherObjectPool, gameObject);
     }
 
     public void DissolveText()

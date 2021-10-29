@@ -4,12 +4,10 @@ using DG.Tweening;
 
 public class AbilityAim
 {
-    public GameObject weapon;
-    public Vector2 offset;
-    private Transform transform;
     private Vector3 aimDirection;
-
-
+    private Transform transform;
+    public Vector2 offset;
+    public GameObject weapon;
     public AbilityAim(Transform transform,Vector2 offset,GameObject weapon)
     {
         this.transform = transform;
